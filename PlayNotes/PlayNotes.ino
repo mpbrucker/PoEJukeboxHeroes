@@ -3,44 +3,64 @@
 
 
 void setup() {
-  Serial.begin(9600);
-  Note note1(440, 1000);
-  Serial.println(note1.getFreq());
-  Serial.println(note1.getDur());
+  Serial.begin(115200);
+  for (int i = 1; i <= 13; i++) {
+    pinMode(i,OUTPUT);
+  }
 }
 
 void loop() {
-
-}
-
-// Takes a stream of note inputs and breaks it up into a series of notes and times
-void streamNotes() {
-  char startChar = char(Serial.read());
-  if (startChar == 's') { // Ensure we're getting a well-formed series of bytes
-    int streamLen = Serial.available()/8; // Since each note/time combo should be 8 bytes, 
-    Note notes[streamLen]; 
-    int idx = 0;
-    int curFreq;
-    int curDur;
-    String curString = "";
-    while (Serial.available()) {
-      char charIn = char(Serial.read());
-      if (charIn == 'x') {
-        curFreq = curString.toInt();
-        curString = "";
-      }
-      else if (charIn == 'y') {
-        curDur = curString.toInt();
-        curString = "";
-        notes[idx] = Note(curFreq, curDur);
-        idx++;
-      }
-      else {
-        curString += charIn;
-      }
-    }
-    return 
+  while (!Serial.available()) { // Wait for something on serial port
   }
-  Serial.flush();
+  String strIn = Serial.readString(); // Read in what's on the serial port
+  int inLen = 0;
+  for (int i = 0; i < strIn.length(); i++) {
+    if (strIn[i] == 'x') {
+      inLen++; // Record the number of notes being read
+    }
+  }
+
+  int freqs[inLen];
+  int durs[inLen];
+
+  int idx = 0;
+  int curFreq;
+  int curDur;
+  String curString = "";
+  for (int i = 0; i < strIn.length(); i++) { // Iterate through the input string
+    char charIn = char(strIn[i]); // Get the current character
+    if (charIn == 'x') { 
+      freqs[idx] = curString.toInt(); // If we reached the first delimiting character, update the frequencies
+      curString = ""; // Reset the current string
+    }
+    else if (charIn == 'y') {
+      durs[idx] = curString.toInt(); // If we reached the second delimiting character, update the durations
+      curString = "";
+      idx++;
+    }
+    else {
+      curString += charIn; // Add to the current string we're looking at
+    }
+  }
+//
+//  for (int i = 0; i < inLen; i++) {
+//    Serial.println(String(freqs[i]) + " " + String(durs[i]));
+//  }
+
 }
+
+
+void playNote(int freq, int dur) {
+  int pin = map(freq, 0, 1000, 1, 13); // Map from frequency to pin
+
+
+  
+}
+
+
+
+
+
+
+
 
