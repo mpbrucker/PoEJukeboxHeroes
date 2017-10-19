@@ -1,6 +1,8 @@
 
 #import "Note.h"
 
+const int SOLENOID_DELAY = 10; // The amount of time to keep the solenoid extended (ms)
+
 
 void setup() {
   Serial.begin(115200);
@@ -51,8 +53,14 @@ void loop() {
 
 
 void playNote(int freq, int dur) {
+  int curTime = millis()
   int pin = map(freq, 0, 1000, 1, 13); // Map from frequency to pin
-
+  digitalWrite(pin, HIGH);
+  delay(SOLENOID_DELAY);
+  digitalWrite(pin, LOW);
+  while (millis() - curTime < dur) {
+    __asm__("nop\n\t");
+  }
 
   
 }
