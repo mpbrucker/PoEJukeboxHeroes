@@ -1,14 +1,16 @@
 
 #import "Note.h"
 
-const int SOLENOID_DELAY = 10; // The amount of time to keep the solenoid extended (ms)
+const int SOLENOID_DELAY = 50; // The amount of time to keep the solenoid extended (ms)
 
 
 void setup() {
   Serial.begin(115200);
   for (int i = 1; i <= 13; i++) {
     pinMode(i,OUTPUT);
+    digitalWrite(i, HIGH);
   }
+
 }
 
 void loop() {
@@ -22,8 +24,8 @@ void loop() {
     }
   }
 
-  int freqs[inLen];
-  int durs[inLen];
+  int pins[inLen]; // Set up list of pins
+  int durs[inLen]; // Set up list of durations
 
   int idx = 0;
   int curFreq;
@@ -32,7 +34,7 @@ void loop() {
   for (int i = 0; i < strIn.length(); i++) { // Iterate through the input string
     char charIn = char(strIn[i]); // Get the current character
     if (charIn == 'x') { 
-      freqs[idx] = curString.toInt(); // If we reached the first delimiting character, update the frequencies
+      pins[idx] = curString.toInt(); // If we reached the first delimiting character, update the frequencies
       curString = ""; // Reset the current string
     }
     else if (charIn == 'y') {
@@ -44,22 +46,32 @@ void loop() {
       curString += charIn; // Add to the current string we're looking at
     }
   }
-//
-//  for (int i = 0; i < inLen; i++) {
-//    Serial.println(String(freqs[i]) + " " + String(durs[i]));
-//  }
+
+  int curNote = 0; // Iterate through the list of notes and play each note
+  int timeStart = millis();
+  do {
+    bool noteDone = playNote(pins[curNote], durs[curNote], timeStart); // Based on the start time of the note, figure out whether we're done playing this note
+    if (noteDone) {
+      Serial.println(String(pins[curNote]) + " " + String(durs[curNote])); // Print the note
+      timeStart = millis(); // Reset the start time
+      curNote++; // Move to the next note
+    }
+  } while (curNote < inLen);
 
 }
 
 
-void playNote(int freq, int dur) {
-  int curTime = millis()
-  int pin = map(freq, 0, 1000, 1, 13); // Map from frequency to pin
-  digitalWrite(pin, HIGH);
-  delay(SOLENOID_DELAY);
-  digitalWrite(pin, LOW);
-  while (millis() - curTime < dur) {
-    __asm__("nop\n\t");
+// Plays the current note. Based on startTime, returns true if the note is finished playing, false otherwise
+bool playNote(int pin, int dur, int startTime) {
+  int diffTime = millis()-startTime; // The difference between the current time and start time
+  if (diffTime < SOLENOID_DELAY) { // Wait 30 ms before retracting solenoid
+    digitalWrite(pin, LOW);
+    return false;
+  } else if (diffTime < dur) { // Wait for the rest of the note duration
+    digitalWrite(pin, HIGH);
+    return false;
+  } else {
+    return true; // We're done playing the note
   }
 
   
