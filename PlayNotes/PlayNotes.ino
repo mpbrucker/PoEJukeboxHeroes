@@ -64,14 +64,17 @@ void loop() {
 // Plays the current note. Based on startTime, returns true if the note is finished playing, false otherwise
 bool playNote(int pin, int dur, int startTime) {
   int diffTime = millis()-startTime; // The difference between the current time and start time
-  if (diffTime < SOLENOID_DELAY) { // Wait 30 ms before retracting solenoid
-    digitalWrite(pin, LOW);
-    return false;
-  } else if (diffTime < dur) { // Wait for the rest of the note duration
-    digitalWrite(pin, HIGH);
-    return false;
-  } else {
-    return true; // We're done playing the note
+  if (dur > SOLENOID_DELAY) {
+    if (diffTime <= dur) {
+      if (diffTime < SOLENOID_DELAY) {
+        digitalWrite(pin, LOW);
+      } else {
+        digitalWrite(pin, HIGH);
+      }
+      return false;
+    } else {
+      return true; // We're done playing the note
+    }
   }
 
   
