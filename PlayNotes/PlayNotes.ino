@@ -2,13 +2,14 @@
 #import "Note.h"
 
 const int SOLENOID_DELAY = 50; // The amount of time to keep the solenoid extended (ms)
+bool isPlaying = false;
 
 
 void setup() {
   Serial.begin(115200);
   for (int i = 1; i <= 13; i++) {
     pinMode(i, OUTPUT);
-    digitalWrite(i, HIGH);
+    digitalWrite(i, LOW);
   }
 
 }
@@ -17,6 +18,7 @@ void loop() {
   while (!Serial.available()) { // Wait for something on serial port
   }
   String strIn = Serial.readString(); // Read in what's on the serial port
+  Serial.println(strIn);
   int inLen = 0;
   for (int i = 0; i < strIn.length(); i++) {
     if (strIn[i] == 'x') {
@@ -46,66 +48,38 @@ void loop() {
       curString += charIn; // Add to the current string we're looking at
     }
   }
-
   int curNote = 0; // Iterate through the list of notes and play each note
   int timeStart = millis();
   int deltaTime = millis() - timeStart;
-//  while (curNote != -1) {
-//    curNote = playNotes(pins, times, curNote, deltaTime);
-//    deltaTime = millis() - timeStart;
-//  }
-    do {
-      bool noteDone = playNote(pins[curNote], times[curNote], timeStart); // Based on the start time of the note, figure out whether we're done playing this note
-      if (noteDone) {
-        timeStart = millis(); // Reset the start time
-        curNote++; // Move to the next note
-      }
-    } while (curNote < inLen);
+  while (curNote != -1) {
+    int noteOut = playNotes(pins, times, curNote, inLen, deltaTime);
+    curNote = noteOut;
+    deltaTime = millis() - timeStart;
+  }
+
 
 }
 
-int playNotes(int pins[], int times[], int startNote, int curTime) {
+int playNotes(int pins[], int times[], int startNote, int numNotes, int curTime) {
   int noteReturn = startNote; // The note we're currently looking at
-  for (int i = startNote; i < sizeof(pins); i++) { // Iterate through the notes, starting at the current note
+  for (int i = startNote; i < numNotes; i++) { // Iterate through the notes, starting at the current note
     if (curTime > times[i] && curTime < times[i] + SOLENOID_DELAY) { // If this note is currently being played
-      digitalWrite(pins[i], LOW);
-    }
-    else {
+      Serial.println("playing " + String(i) + " pin " + String(pins[i]));
       digitalWrite(pins[i], HIGH);
-      if (curTime > times[i]) { // If the note's time has passed, move on to the next note
-        noteReturn++;
-      }
+    }
+    else if (curTime > times[i]){ // If the note has passed, push the solenoid back out
+      digitalWrite(pins[i], LOW);
+      Serial.println("not playing" + String(i));
+      noteReturn++;
     }
   }
-  if (noteReturn < sizeof(pins)) { // Return the current note
+  if (noteReturn < numNotes) { // Return the current note
     return noteReturn;
-  }
-  else {
+  } else {
+    Serial.println("done");
     return -1; // We're done playing all of the notes
   }
 }
-
-
-// Plays the current note. Based on startTime, returns true if the note is finished playing, false otherwise
-bool playNote(int pin, int dur, int startTime) {
-  int diffTime = millis() - startTime; // The difference between the current time and start time
-  if (dur > SOLENOID_DELAY) {
-    if (diffTime <= dur) {
-      if (diffTime < SOLENOID_DELAY) {
-        digitalWrite(pin, LOW);
-      } else {
-        digitalWrite(pin, HIGH);
-      }
-      return false;
-    } else {
-      return true; // We're done playing the note
-    }
-  }
-
-
-}
-
-
 
 
 
