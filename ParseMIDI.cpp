@@ -1,4 +1,4 @@
-// To compile: g++ -std=c++11 ParseMIDI.cpp -Lmidifile/lib -lmidifile
+// To compile: g++ -std=c++11 ParseMIDI.cpp -Lmidifile/lib -lmidifile -L libserial-0.6.0rc2/src/.libs -l serial -lpthread
 #include "midifile/include/MidiFile.h"
 #include "midifile/include/Options.h"
 #include <ctype.h>
@@ -6,8 +6,11 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
+#include <SerialStream.h>
+#include <SerialPort.h>
 
-using namespace std;
+
+using namespace LibSerial;
 
 typedef unsigned char uchar;
 
@@ -23,13 +26,22 @@ void      setTempo              (MidiFile& midifile, int index, double& tempo);
 void      checkOptions          (Options& opts, int argc, char** argv);
 void      usage                 (const char* command);
 int       getPin                (int key);
+void      sendNoteSerial        (int pin, int dur);
 
 //////////////////////////////////////////////////////////////////////////
 
 int main(int argc, char* argv[]) {
-   checkOptions(options, argc, argv);
-   MidiFile midifile(options.getArg(1));
-   convertMidiFileToText(midifile);
+   SerialPort mySerial("/dev/ttyACM0");
+   mySerial.Open();
+   mySerial.SetBaudRate(SerialPort::BAUD_115200);
+   mySerial.SetParity(SerialPort::PARITY_NONE);
+   for (int i = 0; i < 10; i++ ) {
+     mySerial.Write("13x1000y");
+   }
+
+  //  checkOptions(options, argc, argv);
+  //  MidiFile midifile(options.getArg(1));
+  //  convertMidiFileToText(midifile);
    return 0;
 }
 
@@ -73,13 +85,13 @@ void convertMidiFileToText(MidiFile& midifile) {
          key = midifile[0][i][1];
          offtime = midifile[0][i].tick * 60.0 /
                midifile.getTicksPerQuarterNote() / tempo;
-         cout << "note\t" << ontimes[key]
-              << "\t" << offtime - ontimes[key]
-              << "\t" << key << "\t" << onvelocities[key] << endl;
+        //  cout << "note\t" << ontimes[key]
+        //       << "\t" << offtime - ontimes[key]
+        //       << "\t" << key << "\t" << onvelocities[key] << endl;
          if (key >= 60) { // Extract out the melody, then output to serial
-           int noteDur = (offtime - ontimes[key]) * 1000;
+           int noteDur = ontimes[key] * 1000;
            int pin = getPin(key);
-           sendNoteSerial(pin, noteDur)
+           sendNoteSerial(pin, noteDur);
          }
 
          onvelocities[key] = -1;
@@ -132,7 +144,6 @@ void setTempo(MidiFile& midifile, int index, double& tempo) {
 void checkOptions(Options& opts, int argc, char* argv[]) {
    opts.define("author=b",  "author of program");
    opts.define("version=b", "compilation info");
-   opts.define("example=b", "example usages");
    opts.define("h|help=b",  "short description");
 
    opts.define("debug=b",  "debug mode to find errors in input file");
@@ -152,10 +163,9 @@ void checkOptions(Options& opts, int argc, char* argv[]) {
    } else if (opts.getBoolean("help")) {
       usage(opts.getCommand().data());
       exit(0);
-   } else if (opts.getBoolean("example")) {
-      example();
-      exit(0);
    }
+
+
 
    debugQ = opts.getBoolean("debug");
    maxcount = opts.getInteger("max");
@@ -181,5 +191,5 @@ int getPin(int key) {
 }
 
 void sendNoteSerial(int pin, int dur) {
-
+ cout << pin << "\t" << dur << endl;
 }
