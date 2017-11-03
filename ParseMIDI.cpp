@@ -24,45 +24,37 @@ double  tempo = 60.0;
 // function declarations:
 string      convertMidiFileToText (MidiFile& midifile);
 void      setTempo              (MidiFile& midifile, int index, double& tempo);
-void      checkOptions          (Options& opts, int argc, char** argv);
-void      usage                 (const char* command);
 int       getPin                (int key);
-void      sendNoteSerial        (int pin, int dur);
+string      parseNote        (int pin, int dur);
 
 //////////////////////////////////////////////////////////////////////////
 
 int main(int argc, char* argv[]) {
 
+  // Open serial port and set options
   SerialPort mySerial("/dev/ttyACM0");
   mySerial.Open();
   mySerial.SetBaudRate(SerialPort::BAUD_115200);
   mySerial.SetParity(SerialPort::PARITY_NONE);
   mySerial.SetFlowControl(SerialPort::FLOW_CONTROL_NONE);
-  usleep(2000000);
+
+  usleep(2000000); // Wait for serial to reset
   cout << "Sleeping" << endl;
 
   //  mySerial.Write("8x0y8x1000y");
 
-
-  checkOptions(options, argc, argv);
+  options.process(argc, argv);
   MidiFile midifile(options.getArg(1));
   string outStr = convertMidiFileToText(midifile);
   cout << outStr << endl;
   mySerial.Write(outStr);
-  // usleep(2000000);
-  cout << "Sleeping again" << endl;
   mySerial.Close();
   return 0;
 }
 
-//////////////////////////////////////////////////////////////////////////
+/*
 
-
-//////////////////////////////
-//
-// convertMidiFileToText --
-//
-
+*/
 string convertMidiFileToText(MidiFile& midifile) {
   string strOut = "";
 
@@ -88,32 +80,18 @@ string convertMidiFileToText(MidiFile& midifile) {
     if (command == 0x90 && midifile[0][i][2] != 0) {
        // store note-on velocity and time
        key = midifile[0][i][1];
-       vel = midifile[0][i][2];
        ontimes[key] = midifile[0][i].tick * 60.0 / tempo /
              midifile.getTicksPerQuarterNote();
-       onvelocities[key] = vel;
     } else if (command == 0x90 || command == 0x80) {
        // note off command write to output
-       key = midifile[0][i][1];
-       if (key >= 60) { // Extract out the melody, then output to serial
-         int noteDur = ontimes[key] * 1000;
-         int pin = getPin(key);
-         strOut += std::to_string(pin) + "x" + std::to_string(noteDur) + "y";
-        //  cout << strOut << endl;
-         sendNoteSerial(pin, noteDur);
-       }
-       else {
-         int noteDur = ontimes[key] * 1000;
-         int pin = 9;
-         strOut += std::to_string(pin) + "x" + std::to_string(noteDur) + "y";
-         sendNoteSerial(pin, noteDur);
-       }
-
-       onvelocities[key] = -1;
+       key = midifile[0][i][1]; // Get the current key being pressed
+       int noteDur = ontimes[key] * 1000; // Get the current note time in seconds
+       int pin = getPin(key); // Get the current pin
+       strOut += parseNote(pin, noteDur);
        ontimes[key] = -1.0;
     }
 
-    // check for tempo indication
+    //check for tempo indication
     if (midifile[0][i][0] == 0xff &&
                midifile[0][i][1] == 0x51) {
        setTempo(midifile, i, tempo);
@@ -123,12 +101,9 @@ string convertMidiFileToText(MidiFile& midifile) {
   return strOut;
 }
 
-
-//////////////////////////////
-//
-// setTempo -- set the current tempo
-//
-
+/*
+  Redefines the tempo based on a MIDI command.
+*/
 void setTempo(MidiFile& midifile, int index, double& tempo) {
    double newtempo = 0.0;
    static int count = 0;
@@ -152,60 +127,16 @@ void setTempo(MidiFile& midifile, int index, double& tempo) {
 
 
 
-//////////////////////////////
-//
-// checkOptions --
-//
-
-void checkOptions(Options& opts, int argc, char* argv[]) {
-   opts.define("author=b",  "author of program");
-   opts.define("version=b", "compilation info");
-   opts.define("h|help=b",  "short description");
-
-   opts.define("debug=b",  "debug mode to find errors in input file");
-   opts.define("max=i:100000", "maximum number of notes expected in input");
-
-   opts.process(argc, argv);
-
-   // handle basic options:
-   if (opts.getBoolean("author")) {
-      cout << "Written by Craig Stuart Sapp, "
-           << "craig@ccrma.stanford.edu, 22 Jan 2002" << endl;
-      exit(0);
-   } else if (opts.getBoolean("version")) {
-      cout << argv[0] << ", version: 22 Jan 2002" << endl;
-      cout << "compiled: " << __DATE__ << endl;
-      exit(0);
-   } else if (opts.getBoolean("help")) {
-      usage(opts.getCommand().data());
-      exit(0);
-   }
-
-
-
-   debugQ = opts.getBoolean("debug");
-   maxcount = opts.getInteger("max");
-
-   if (opts.getArgCount() != 1) {
-      usage(opts.getCommand().data());
-      exit(1);
-   }
-
-}
-
-//////////////////////////////
-//
-// usage --
-//
-
-void usage(const char* command) {
-   cout << "Usage: " << command << " midifile" << endl;
-}
 
 int getPin(int key) {
-  return 8;
+  if (key >= 60) {
+    return 8;
+  }
+  else {
+    return 9;
+  }
 }
 
-void sendNoteSerial(int pin, int dur) {
- cout << pin << "\t" << dur << endl;
+string parseNote(int pin, int dur) {
+ return std::to_string(pin) + "x" + std::to_string(dur) + "y";
 }
