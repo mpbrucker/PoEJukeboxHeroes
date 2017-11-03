@@ -18,7 +18,7 @@ void loop() {
   while (!Serial.available()) { // Wait for something on serial port
   }
   String strIn = Serial.readString(); // Read in what's on the serial port
-  Serial.println(strIn);
+
   int inLen = 0;
   for (int i = 0; i < strIn.length(); i++) {
     if (strIn[i] == 'x') {
@@ -51,32 +51,35 @@ void loop() {
   int curNote = 0; // Iterate through the list of notes and play each note
   int timeStart = millis();
   int deltaTime = millis() - timeStart;
+  int prevDelta = 0;
   while (curNote != -1) {
-    int noteOut = playNotes(pins, times, curNote, inLen, deltaTime);
+    int noteOut = playNotes(pins, times, curNote, inLen, deltaTime, prevDelta);
     curNote = noteOut;
+    prevDelta = deltaTime; 
     deltaTime = millis() - timeStart;
   }
 
 
 }
 
-int playNotes(int pins[], int times[], int startNote, int numNotes, int curTime) {
+int playNotes(int pins[], int times[], int startNote, int numNotes, int curTime, int prevTime) {
   int noteReturn = startNote; // The note we're currently looking at
-  for (int i = startNote; i < numNotes; i++) { // Iterate through the notes, starting at the current note
+  for (int i = 0; i < numNotes; i++) { // Iterate through the notes, starting at the current note
     if (curTime > times[i] && curTime < times[i] + SOLENOID_DELAY) { // If this note is currently being played
-      Serial.println("playing " + String(i) + " pin " + String(pins[i]));
+      Serial.println("playing " + String(i) + " pin " + String(pins[i]) + " time " + String(times[i]));
       digitalWrite(pins[i], HIGH);
     }
-    else if (curTime > times[i]){ // If the note has passed, push the solenoid back out
+    else if (curTime > times[i] && prevTime < times[i] + SOLENOID_DELAY){ // If the note has passed, push the solenoid back out
       digitalWrite(pins[i], LOW);
       Serial.println("not playing" + String(i));
       noteReturn++;
     }
   }
+  Serial.println(noteReturn);
   if (noteReturn < numNotes) { // Return the current note
     return noteReturn;
   } else {
-    Serial.println("done");
+//    Serial.println("done");
     return -1; // We're done playing all of the notes
   }
 }

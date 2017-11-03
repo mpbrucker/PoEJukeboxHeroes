@@ -6,9 +6,10 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
+#include <string>
 #include <SerialStream.h>
 #include <SerialPort.h>
-
+#include <unistd.h>
 
 using namespace LibSerial;
 
@@ -21,7 +22,7 @@ int     maxcount = 100000;
 double  tempo = 60.0;
 
 // function declarations:
-void      convertMidiFileToText (MidiFile& midifile);
+string      convertMidiFileToText (MidiFile& midifile);
 void      setTempo              (MidiFile& midifile, int index, double& tempo);
 void      checkOptions          (Options& opts, int argc, char** argv);
 void      usage                 (const char* command);
@@ -31,18 +32,27 @@ void      sendNoteSerial        (int pin, int dur);
 //////////////////////////////////////////////////////////////////////////
 
 int main(int argc, char* argv[]) {
-   SerialPort mySerial("/dev/ttyACM0");
-   mySerial.Open();
-   mySerial.SetBaudRate(SerialPort::BAUD_115200);
-   mySerial.SetParity(SerialPort::PARITY_NONE);
-   for (int i = 0; i < 10; i++ ) {
-     mySerial.Write("13x1000y");
-   }
 
-  //  checkOptions(options, argc, argv);
-  //  MidiFile midifile(options.getArg(1));
-  //  convertMidiFileToText(midifile);
-   return 0;
+  SerialPort mySerial("/dev/ttyACM0");
+  mySerial.Open();
+  mySerial.SetBaudRate(SerialPort::BAUD_115200);
+  mySerial.SetParity(SerialPort::PARITY_NONE);
+  mySerial.SetFlowControl(SerialPort::FLOW_CONTROL_NONE);
+  usleep(2000000);
+  cout << "Sleeping" << endl;
+
+  //  mySerial.Write("8x0y8x1000y");
+
+
+  checkOptions(options, argc, argv);
+  MidiFile midifile(options.getArg(1));
+  string outStr = convertMidiFileToText(midifile);
+  cout << outStr << endl;
+  mySerial.Write(outStr);
+  // usleep(2000000);
+  cout << "Sleeping again" << endl;
+  mySerial.Close();
+  return 0;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -53,58 +63,64 @@ int main(int argc, char* argv[]) {
 // convertMidiFileToText --
 //
 
-void convertMidiFileToText(MidiFile& midifile) {
-   midifile.absoluteTicks();
-   midifile.joinTracks();
+string convertMidiFileToText(MidiFile& midifile) {
+  string strOut = "";
 
-   vector<double> ontimes(128);
-   vector<int> onvelocities(128);
-   int i;
-   for (i=0; i<128; i++) {
-      ontimes[i] = -1.0;
-      onvelocities[i] = -1;
-   }
+  midifile.absoluteTicks();
+  midifile.joinTracks();
 
-   double offtime = 0.0;
+  vector<double> ontimes(128);
+  vector<int> onvelocities(128);
+  int i;
+  for (i=0; i<128; i++) {
+    ontimes[i] = -1.0;
+    onvelocities[i] = -1;
+  }
 
-   int key = 0;
-   int vel = 0;
-   int command = 0;
+  double offtime = 0.0;
 
-   for (i=0; i<midifile.getNumEvents(0); i++) {
-      command = midifile[0][i][0] & 0xf0;
-      if (command == 0x90 && midifile[0][i][2] != 0) {
-         // store note-on velocity and time
-         key = midifile[0][i][1];
-         vel = midifile[0][i][2];
-         ontimes[key] = midifile[0][i].tick * 60.0 / tempo /
-               midifile.getTicksPerQuarterNote();
-         onvelocities[key] = vel;
-      } else if (command == 0x90 || command == 0x80) {
-         // note off command write to output
-         key = midifile[0][i][1];
-         offtime = midifile[0][i].tick * 60.0 /
-               midifile.getTicksPerQuarterNote() / tempo;
-        //  cout << "note\t" << ontimes[key]
-        //       << "\t" << offtime - ontimes[key]
-        //       << "\t" << key << "\t" << onvelocities[key] << endl;
-         if (key >= 60) { // Extract out the melody, then output to serial
-           int noteDur = ontimes[key] * 1000;
-           int pin = getPin(key);
-           sendNoteSerial(pin, noteDur);
-         }
+  int key = 0;
+  int vel = 0;
+  int command = 0;
 
-         onvelocities[key] = -1;
-         ontimes[key] = -1.0;
-      }
+  for (i=0; i<midifile.getNumEvents(0); i++) {
+    command = midifile[0][i][0] & 0xf0;
+    if (command == 0x90 && midifile[0][i][2] != 0) {
+       // store note-on velocity and time
+       key = midifile[0][i][1];
+       vel = midifile[0][i][2];
+       ontimes[key] = midifile[0][i].tick * 60.0 / tempo /
+             midifile.getTicksPerQuarterNote();
+       onvelocities[key] = vel;
+    } else if (command == 0x90 || command == 0x80) {
+       // note off command write to output
+       key = midifile[0][i][1];
+       if (key >= 60) { // Extract out the melody, then output to serial
+         int noteDur = ontimes[key] * 1000;
+         int pin = getPin(key);
+         strOut += std::to_string(pin) + "x" + std::to_string(noteDur) + "y";
+        //  cout << strOut << endl;
+         sendNoteSerial(pin, noteDur);
+       }
+       else {
+         int noteDur = ontimes[key] * 1000;
+         int pin = 9;
+         strOut += std::to_string(pin) + "x" + std::to_string(noteDur) + "y";
+         sendNoteSerial(pin, noteDur);
+       }
 
-      // check for tempo indication
-      if (midifile[0][i][0] == 0xff &&
-                 midifile[0][i][1] == 0x51) {
-         setTempo(midifile, i, tempo);
-      }
-   }
+       onvelocities[key] = -1;
+       ontimes[key] = -1.0;
+    }
 
+    // check for tempo indication
+    if (midifile[0][i][0] == 0xff &&
+               midifile[0][i][1] == 0x51) {
+       setTempo(midifile, i, tempo);
+    }
+  }
+  cout << strOut << endl;
+  return strOut;
 }
 
 
@@ -187,7 +203,7 @@ void usage(const char* command) {
 }
 
 int getPin(int key) {
-  return 13;
+  return 8;
 }
 
 void sendNoteSerial(int pin, int dur) {
