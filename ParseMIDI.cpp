@@ -80,15 +80,22 @@ string convertMidiFileToText(MidiFile& midifile) {
     if (command == 0x90 && midifile[0][i][2] != 0) {
        // store note-on velocity and time
        key = midifile[0][i][1];
-       ontimes[key] = midifile[0][i].tick * 60.0 / tempo /
-             midifile.getTicksPerQuarterNote();
+       int onTime = (midifile[0][i].tick * 60.0 / tempo / midifile.getTicksPerQuarterNote()) * 1000;
+
+       int pin = getPin(key); // Get the current pin
+       cout << key << "\t" << onTime << endl;
+       strOut += parseNote(pin, onTime);
+      //  cout << midifile[0][1].tick << endl;
+      //  ontimes[key] = midifile[0][i].tick * 60.0 / tempo /
+      //        midifile.getTicksPerQuarterNote();
     } else if (command == 0x90 || command == 0x80) {
        // note off command write to output
-       key = midifile[0][i][1]; // Get the current key being pressed
-       int noteDur = ontimes[key] * 1000; // Get the current note time in seconds
-       int pin = getPin(key); // Get the current pin
-       strOut += parseNote(pin, noteDur);
-       ontimes[key] = -1.0;
+      //  key = midifile[0][i][1]; // Get the current key being pressed
+      //  int noteDur = ontimes[key] * 1000; // Get the current note time in seconds
+      //  cout << key << "\t" << ontimes[key] << endl;
+      //  int pin = getPin(key); // Get the current pin
+      //  strOut += parseNote(pin, noteDur);
+      //  ontimes[key] = -1.0;
     }
 
     //check for tempo indication
@@ -97,7 +104,6 @@ string convertMidiFileToText(MidiFile& midifile) {
        setTempo(midifile, i, tempo);
     }
   }
-  cout << strOut << endl;
   return strOut;
 }
 
@@ -129,14 +135,62 @@ void setTempo(MidiFile& midifile, int index, double& tempo) {
 
 
 int getPin(int key) {
+  int octave = key/12;
+  int standNote = key - (octave - 12);
+  switch(standNote) {
+    case 0:
+      return 1;
+      break;
+    case 2:
+      return 2;
+      break;
+    case 4:
+      return 3;
+      break;
+    case 5:
+      return 4;
+      break;
+    case 7:
+      return 5;
+      break;
+    case 9:
+      return 6;
+      break;
+    case 11:
+      return 7;
+      break;
+    case 12:
+      return 8;
+      break;
+    case 14:
+      return 9;
+      break;
+    case 16:
+      return 10;
+      break;
+    case 17:
+      return 11;
+      break;
+    case 19:
+      return 12;
+      break;
+    case 21:
+      return 13;
+      break;
+    default:
+      return 0;
+  }
+
+
   if (key >= 60) {
-    return 8;
+    return 9;
   }
   else {
-    return 9;
+    return 8;
   }
 }
 
 string parseNote(int pin, int dur) {
- return std::to_string(pin) + "x" + std::to_string(dur) + "y";
+  string returnStr = std::to_string(pin) + "x" + std::to_string(dur) + "y";
+  return returnStr;
 }
