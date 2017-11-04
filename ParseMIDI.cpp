@@ -136,58 +136,54 @@ void setTempo(MidiFile& midifile, int index, double& tempo) {
 
 int getPin(int key) {
   int octave = key/12;
-  int standNote = key - (octave - 12);
-  switch(standNote) {
-    case 0:
-      return 1;
-      break;
-    case 2:
-      return 2;
-      break;
-    case 4:
-      return 3;
-      break;
-    case 5:
-      return 4;
-      break;
-    case 7:
-      return 5;
-      break;
-    case 9:
-      return 6;
-      break;
-    case 11:
-      return 7;
-      break;
-    case 12:
-      return 8;
-      break;
-    case 14:
-      return 9;
-      break;
-    case 16:
-      return 10;
-      break;
-    case 17:
-      return 11;
-      break;
-    case 19:
-      return 12;
-      break;
-    case 21:
-      return 13;
-      break;
-    default:
-      return 0;
+  if (octave >= 5) { // For now, just look at notes within the melody
+    int standNote = key - (octave*12);
+    cout << standNote << endl;
+    switch(standNote) {
+      case 0:
+        return 1;
+        break;
+      case 2:
+        return 2;
+        break;
+      case 4:
+        return 3;
+        break;
+      case 5:
+        return 4;
+        break;
+      case 7:
+        return 5;
+        break;
+      case 9:
+        return 6;
+        break;
+      case 11:
+        return 7;
+        break;
+      case 12:
+        return 8;
+        break;
+      case 14:
+        return 9;
+        break;
+      case 16:
+        return 10;
+        break;
+      case 17:
+        return 11;
+        break;
+      case 19:
+        return 12;
+        break;
+      case 21:
+        return 13;
+        break;
+      default:
+        return 0;
+    }
   }
-
-
-  if (key >= 60) {
-    return 9;
-  }
-  else {
-    return 8;
-  }
+  return 0;
 }
 
 string parseNote(int pin, int dur) {

@@ -36,7 +36,7 @@ void loop() {
   for (int i = 0; i < strIn.length(); i++) { // Iterate through the input string
     char charIn = char(strIn[i]); // Get the current character
     if (charIn == 'x') {
-      pins[idx] = curString.toInt(); // If we reached the first delimiting character, update the frequencies
+      pins[idx] = curString.toInt()+1; // If we reached the first delimiting character, update the frequencies
       curString = ""; // Reset the current string
     }
     else if (charIn == 'y') {
