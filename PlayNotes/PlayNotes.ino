@@ -66,16 +66,16 @@ int playNotes(int pins[], int times[], int startNote, int numNotes, int curTime,
   int noteReturn = startNote; // The note we're currently looking at
   for (int i = 0; i < numNotes; i++) { // Iterate through the notes, starting at the current note
     if (curTime > times[i] && curTime < times[i] + SOLENOID_DELAY) { // If this note is currently being played
-      Serial.println("playing " + String(i) + " pin " + String(pins[i]) + " time " + String(times[i]));
+//      Serial.println("playing " + String(i) + " pin " + String(pins[i]) + " time " + String(times[i]));
       digitalWrite(pins[i], HIGH);
     }
     else if (curTime > times[i] && prevTime < times[i] + SOLENOID_DELAY){ // If the note has passed, push the solenoid back out
       digitalWrite(pins[i], LOW);
-      Serial.println("not playing" + String(i));
+//      Serial.println("not playing" + String(i));
       noteReturn++;
     }
   }
-  Serial.println(noteReturn);
+//  Serial.println(noteReturn);
   if (noteReturn < numNotes) { // Return the current note
     return noteReturn;
   } else {

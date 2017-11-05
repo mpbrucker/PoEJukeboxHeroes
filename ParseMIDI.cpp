@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
   mySerial.SetParity(SerialPort::PARITY_NONE);
   mySerial.SetFlowControl(SerialPort::FLOW_CONTROL_NONE);
 
-  usleep(2000000); // Wait for serial to reset
+  usleep(5000000); // Wait for serial to reset
   cout << "Sleeping" << endl;
 
   //  mySerial.Write("8x0y8x1000y");
@@ -84,7 +84,10 @@ string convertMidiFileToText(MidiFile& midifile) {
 
        int pin = getPin(key); // Get the current pin
        cout << key << "\t" << onTime << endl;
-       strOut += parseNote(pin, onTime);
+       if (pin != -1)
+       {
+         strOut += parseNote(pin, onTime);
+       }
       //  cout << midifile[0][1].tick << endl;
       //  ontimes[key] = midifile[0][i].tick * 60.0 / tempo /
       //        midifile.getTicksPerQuarterNote();
@@ -180,10 +183,10 @@ int getPin(int key) {
         return 13;
         break;
       default:
-        return 0;
+        return -1;
     }
   }
-  return 0;
+  return -1;
 }
 
 string parseNote(int pin, int dur) {
