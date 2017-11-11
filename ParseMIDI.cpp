@@ -33,10 +33,18 @@ int main(int argc, char* argv[]) {
 
   // Open serial port and set options
   SerialPort mySerial("/dev/ttyACM0");
-  mySerial.Open();
-  mySerial.SetBaudRate(SerialPort::BAUD_115200);
-  mySerial.SetParity(SerialPort::PARITY_NONE);
-  mySerial.SetFlowControl(SerialPort::FLOW_CONTROL_NONE);
+  while (true) {
+    try {
+      mySerial.Open();
+      mySerial.SetBaudRate(SerialPort::BAUD_115200);
+      mySerial.SetParity(SerialPort::PARITY_NONE);
+      mySerial.SetFlowControl(SerialPort::FLOW_CONTROL_NONE);
+      break;
+    } catch (SerialPort::OpenFailed exc) {
+      cout << "Port not found" << endl;
+      usleep(1000000);
+    }
+  }
 
   usleep(5000000); // Wait for serial to reset
   cout << "Sleeping" << endl;

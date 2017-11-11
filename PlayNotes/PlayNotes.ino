@@ -1,7 +1,7 @@
 
 #import "Note.h"
 
-const int SOLENOID_DELAY = 50; // The amount of time to keep the solenoid extended (ms)
+const int SOLENOID_DELAY = 20; // The amount of time to keep the solenoid extended (ms)
 bool isPlaying = false;
 
 
