@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
   usleep(5000000); // Wait for serial to reset
   cout << "Sleeping" << endl;
 
-  //  mySerial.Write("8x0y8x1000y");
+  mySerial.Write("8x0y8x1000y");
 
   options.process(argc, argv);
   MidiFile midifile(options.getArg(1));
