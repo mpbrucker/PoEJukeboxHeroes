@@ -1,4 +1,4 @@
-// To compile: g++ -std=c++11 ParseMIDI.cpp -Lmidifile/lib -lmidifile -L libserial-0.6.0rc2/src/.libs -l serial -lpthread
+// To compile: g++ -lwiringPi -std=c++11 ParseMIDI.cpp -Lmidifile/lib -lmidifile -L libserial-0.6.0rc2/src/.libs -l serial -lpthread
 #include "midifile/include/MidiFile.h"
 #include "midifile/include/Options.h"
 #include <ctype.h>
@@ -10,6 +10,7 @@
 #include <SerialStream.h>
 #include <SerialPort.h>
 #include <unistd.h>
+#include <wiringPi.h>
 
 using namespace LibSerial;
 
@@ -20,6 +21,7 @@ Options options;
 int     debugQ = 0;             // use with --debug option
 int     maxcount = 100000;
 double  tempo = 60.0;
+int songselected = -1;
 
 // function declarations:
 string      convertMidiFileToText (MidiFile& midifile);
@@ -30,6 +32,15 @@ string      parseNote        (int pin, int dur);
 //////////////////////////////////////////////////////////////////////////
 
 int main(int argc, char* argv[]) {
+  wiringPiSetup();
+  pinMode(7, INPUT);
+  // Wait for button input
+  while (songselected == -1) {
+    bool buttonstatus = digitalRead(7);
+    if (buttonstatus) {
+      songselected = 0;
+    }
+  }
 
   // Open serial port and set options
   SerialPort mySerial("/dev/ttyACM0");
@@ -49,7 +60,7 @@ int main(int argc, char* argv[]) {
   usleep(5000000); // Wait for serial to reset
   cout << "Sleeping" << endl;
 
-  mySerial.Write("8x0y8x1000y");
+  //mySerial.Write("8x0y8x1000y");
 
   options.process(argc, argv);
   MidiFile midifile(options.getArg(1));
