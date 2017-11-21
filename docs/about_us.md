@@ -1,0 +1,2 @@
+##About Us
+Jukebox Heroes is made up of five dedicated and excited students of a Principles of Engineering class at Olin College of Engineering. As a part of this class we were given 8 weeks to create a product that contained mechanical, electrical, and software components. With this prompt and timeline in mind we ideated potential project ideas ranging from braille printers to automated gardens, and settled upon the idea of making a mechanically played jukebox. From this Jukebox Heroes was born. 
