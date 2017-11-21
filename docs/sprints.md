@@ -71,7 +71,7 @@ We were not able to work on the marble return system as much as we would have li
 
 Although we chose to split the work up based on who was the point person for a specific task or system, our communication lacked in this sprint. We had not clearly defined the roles and responsibilities of a point person, so each of us made design decisions and without necessarily informing the rest of the team. This made integration difficult because we had different expectations. Our kaizen for this sprint was to communicate before subsystems before committing to a design so that we would all be on the same page before moving forward.
 
-#### Sprint 3 (Minimum Viable Product)
+## Sprint 3 (Minimum Viable Product)
 
 To address our kaizen from Sprint 2, we defined what a point person can do and who makes final decisions on the first day of Sprint 3 and also held two design reviews. Our first design review evaluated the mechanical structure. By the end of Sprint 3, we needed our MVP, so we wanted to have a polished structure that we had all given feedback on. To make final decisions, we discussed our options as a group.
 
