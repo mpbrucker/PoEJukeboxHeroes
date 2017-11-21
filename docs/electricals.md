@@ -1,4 +1,9 @@
-# Electricals
+---
+layout: default
+title: Electrical Subsystem
+description: Overview of each of the electrical subsystems.
+---
+# Electrical Subsystems
 ## Solenoid Actuation
 When initially examining the challenge of creating a mechanically played jukebox, one of our first discussions was that of actuation. After ideating over the mechanical system design that would allow us to control the release of marbles, we settled on a ramp of some sort with a blockage that would prevent marbles from release until we actuated the system and released a marble. Once we settled on a more refined definition of how that would work we examined whether we were interested in using a motor or a solenoid for this task. After some research it became abundantly clear that a solenoid was the right tool for the job.
 
