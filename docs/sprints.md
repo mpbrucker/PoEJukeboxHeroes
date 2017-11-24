@@ -88,4 +88,30 @@ For this sprint, we continued polishing and integrating all of our subsystems. W
 
 Dedicated to having a positive work environment, we made an anonymous survey for each of us to fill out with questions prompting "I like" and "I wish" statements. We discussed the results of this survey in one of our meetings and decided how we could address the negative aspects of our teaming process. One of the results of this was the "All-Play" part of our meetings. Before breaking off into individual tasks during meetings, we sat down and had an "All-Play," during which we brought up concerns relevant to the entire team and spoke about topics that we all needed to give feedback on.
 
+For the second week of the sprint, we planned another team bonding activity in Boston. Our team outing in Sprint 2 went very well and helped our productivity, so we wanted to do something similar in this sprint. 
+
+### Issues
+
+
+## Sprint 4 (Stretch Goals)
+
+Once we achieved our MVP, we were able to move on to our stretch goals and improvement of the aesthetic of our overall design. We defined our stretch goals in Sprint 1 and refined them in Sprint 2:
+
+- Percussion incorporation
+- Having multiple songs to play
+- Using buttons to select a song
+- Process MIDI files automatically
+
+### Mechanical
+
+### Electrical
+
+In Sprint 3, we ordered buttons with the intention of including them in our structure for the final deliverable. The three buttons were incorporated in the electrical system and the software system controlled by the Raspberry Pi. We were able to make the button play "Twinkle, Twinkle, Little Star" and hope to use the other two to choose from a list of songs.
+
+### Software
+
+On the software side, we programmed the Raspberry Pi to process user-selected MIDI files automatically. The information from the MIDI file is parsed and sent to the Arduino, which controls the solenoids and hits the marbles onto the xylophone in the rhythm of the tune. This program can parse any MIDI file chosen by the user; its flexibility made it an attractive choice for a stretch goal because it works well with our other goal involving our jukebox being able to play multiple songs.
+
+### Team Health
+
 ### Issues
