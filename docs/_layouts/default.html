@@ -25,7 +25,6 @@
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-
 									{% for page in site.pages %}
 										{% assign path_name = {{page.path}} | remove: ".md" %}
 										<li><a href={{path_name}}>{{page.title}}</a></li>

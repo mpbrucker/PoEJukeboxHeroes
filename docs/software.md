@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: no-sidebar
 title: Software Subsystem
 description: The code that makes the music happen.
 ---
