@@ -27,7 +27,8 @@
 								<ul>
 
 									{% for page in site.pages %}
-										<li><a href={{page.filename}}>{{page.title}}</a></li>
+										{% assign path_name = {{page.path}} | remove: ".md" %}
+										<li><a href={{path_name}}>{{page.title}}</a></li>
 									{% endfor %}
 								</ul>
 							</nav>
