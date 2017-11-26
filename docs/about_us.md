@@ -16,3 +16,7 @@ Kerry McConnaughay, originally from Northern Virginia, is a member of the Class 
 ![MattyB](images/matt.jpg)
 
 Matt is a Class of 2020 E:Computing major. He grew up romping through the corn fields of Iowa, and as such he shares a special bond with anything corn-related. On the team, his primary focus is handling the software tasks and finding sketchy C++ libraries for various purposes. In this project, he hopes to get better at doing rapid prototyping through laser cutting and 3D printing, and to also learn more about a programming language that isn't Python. In his free time, he enjoys doing education research and singing along to "Mi Gente."
+
+![Annie Kroo](images/annie.jpg)
+
+Annie Kroo is a class of 2020 electrical engineering student at Olin College of Engineering. She is particularly interested in RF communications and in mechatronics. In this project her goals have been to get better at creating high quality prototypes, work on systems integration and learn more and practice electrical circuit design. She has done each of these in her work on the electrical design of the system as well as her design and prototyping of the marble return system. Annie has really enjoyed working on this project as it brings together her love of music with her love of engineering. In her spare time, she loves hiking, soccer, theater, and piloting small planes.
