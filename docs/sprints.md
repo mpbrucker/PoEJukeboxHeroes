@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Our Process
+title: Sprint Overviews
 description: A sprint-by-sprint look at how we got to where we are.
 ---
 
@@ -87,7 +87,7 @@ For this sprint, we continued polishing and integrating all of our subsystems. W
 
 Dedicated to having a positive work environment, we made an anonymous survey for each of us to fill out with questions prompting "I like" and "I wish" statements. We discussed the results of this survey in one of our meetings and decided how we could address the negative aspects of our teaming process. One of the results of this was the "All-Play" part of our meetings. Before breaking off into individual tasks during meetings, we sat down and had an "All-Play," during which we brought up concerns relevant to the entire team and spoke about topics that we all needed to give feedback on.
 
-For the second week of the sprint, we planned another team bonding activity in Boston. Our team outing in Sprint 2 went very well and helped our productivity, so we wanted to do something similar in this sprint. 
+For the second week of the sprint, we planned another team bonding activity in Boston. Our team outing in Sprint 2 went very well and helped our productivity, so we wanted to do something similar in this sprint.
 
 ### Issues
 
