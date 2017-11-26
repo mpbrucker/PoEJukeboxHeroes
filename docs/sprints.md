@@ -11,7 +11,6 @@ description: A sprint-by-sprint look at how we got to where we are.
 ## Sprint 1
 Our primary focus during this sprint was to get the mechanical specifics of launching marbles working. We knew that consistently launching marbles would prove to be a fairly difficult task, so we decided to focus our efforts on that. In addition, we wanted to integrate the electrical and basic software components to have two working marble launchers by the end of the sprint.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OFr5i9Vk408" frameborder="0" allowfullscreen></iframe>
 
 ### Mechanical
 
