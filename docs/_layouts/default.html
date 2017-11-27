@@ -1,16 +1,13 @@
 <!DOCTYPE HTML>
-<!--
-	Escape Velocity by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
-		<title>{{page.title}} - Jukebox Heroes</title>
+		<title>{{page.title}} - {{site.title}}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body class="homepage">
@@ -30,8 +27,11 @@
 							<nav id="nav">
 								<ul>
 									{% for page in site.pages %}
-										<li><a href={{page.filename}}>{{page.title}}</a></li>
-									(% endfor %)
+										{% if page.path != "feed.xml" and page.path != "assets/main.scss" %}
+											{% assign path_name = page.path | remove: ".md" %}
+											<li><a href={{path_name}}>{{page.title}}</a></li>
+										{% endif %}
+									{% endfor %}
 								</ul>
 							</nav>
 
@@ -116,10 +116,6 @@
 										</div>
 									</div>
 								</div>
-								<ul class="actions actions-centered">
-									<li><a href="#" class="button style1 big">Get Started</a></li>
-									<li><a href="#" class="button style2 big">More Info</a></li>
-								</ul>
 							</section>
 
 					</div>
@@ -130,17 +126,21 @@
 					<div class="title">Subsystems</div>
 					<div id="highlights" class="container">
 						<div class="row 150%">
-						{% for page in site.pages % }
-							<div class="4u 12u(mobile)">
-								<section class="highlight">
-									<a href={{page.filename}} class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-									<h3><a href={{page.filename}}>{{page.title}}</a></h3>
-									<p>Eget mattis at, laoreet vel amet sed velit aliquam diam ante, dolor aliquet sit amet vulputate mattis amet laoreet lorem.</p>
-									<ul class="actions">
-										<li><a href={{page.filename}} class="button style1">Learn More</a></li>
-									</ul>
-								</section>
-							</div>
+						{% for page in site.pages %}
+							{% if page.category == "subsystem" %}
+								<div class="4u 12u(mobile)">
+									<section class="highlight">
+										{% assign page_name = "images/" | append: page.path %}
+										{% assign path_name = page.path | remove: ".md" %}
+										<a href={{path_name}} class="image featured"><img src={{page_name | replace: "md", "jpg" }} alt="" /></a>
+										<h3><a href={{path_name}}>{{page.title}}</a></h3>
+										<p>{{page.description}}</p>
+										<ul class="actions">
+											<li><a href={{path_name}} class="button style1">Learn More</a></li>
+										</ul>
+									</section>
+								</div>
+							{% endif %}
 						{% endfor %}
 						</div>
 					</div>
@@ -149,34 +149,27 @@
 			<!-- Footer -->
 				<div id="footer-wrapper" class="wrapper">
 					<div class="title">Follow Us</div>
-					<div id="footer" class="container">
-						<hr />
-						<div class="row 150%">
-							<div class="6u 12u(mobile)">
+					<div id="features" class="container">
 
 								<!-- Contact -->
-									<section class="feature-list small">
+									<section class="feature-list">
 										<div class="row">
 											<div class="6u 12u(mobile)">
-												<section>
-													<h3 class="icon fa-comment">Social</h3>
-													<p>
-														<a href="#">@untitled-corp</a><br />
-														<a href="#">linkedin.com/untitled</a><br />
-														<a href="#">facebook.com/untitled</a>
-													</p>
-												</section>
+													<h3 class="icon fa-github" id="icon">
+														<a href="http://github.com/mpbrucker/PoEJukeboxHeroes">Github</a>
+													</h3>
+											</div>
+											<div class="6u 12u(mobile)" id="icon">
+													<h3 class="icon fa-instagram">
+														<a href="http://instagram.com/poejukeboxhero17">Instagram</a>
+													</h3>
 											</div>
 										</div>
 									</section>
-
-							</div>
-						</div>
-						<hr />
 					</div>
 					<div id="copyright">
 						<ul>
-							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							<li>&copy; Jukebox Heroes</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 						</ul>
 					</div>
 				</div>

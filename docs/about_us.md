@@ -5,7 +5,7 @@ description: Introduction to the team
 ---
 
 ## About Us
-Jukebox Heroes is made up of five dedicated and excited students of a Principles of Engineering class at Olin College of Engineering. As a part of this class we were given 8 weeks to create a product that contained mechanical, electrical, and software components. With this prompt and timeline in mind we ideated potential project ideas ranging from braille printers to automated gardens, and settled upon the idea of making a mechanically played jukebox. From this Jukebox Heroes was born.
+Jukebox Heroes is made up of five dedicated and excited students of a Principles of Engineering class at Olin College of Engineering. As a part of this class we were given 8 weeks to create a product that contained mechanical, electrical, and software components. With this prompt and timeline in mind we ideated potential project ideas ranging from braille printers to automated gardens, and settled upon the idea of making a mechanically played jukebox. From this, Jukebox Heroes was born.
 
 
 ![Kerry McConnaughay, sophomore mechanical engineer.](images/kerry.jpg)
@@ -20,3 +20,5 @@ Matt is a Class of 2020 E:Computing major. He grew up romping through the corn f
 ![Annie Kroo](images/annie.jpg)
 
 Annie Kroo is a class of 2020 electrical engineering student at Olin College of Engineering. She is particularly interested in RF communications and in mechatronics. In this project her goals have been to get better at creating high quality prototypes, work on systems integration and learn more and practice electrical circuit design. She has done each of these in her work on the electrical design of the system as well as her design and prototyping of the marble return system. Annie has really enjoyed working on this project as it brings together her love of music with her love of engineering. In her spare time, she loves hiking, soccer, theater, and piloting small planes.
+
+![Missoury Lytle](images/annie.jpg)

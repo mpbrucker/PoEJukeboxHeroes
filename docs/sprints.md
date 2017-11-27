@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Our Process
+title: Sprint Overviews
 description: A sprint-by-sprint look at how we got to where we are.
 ---
 
@@ -11,7 +11,6 @@ description: A sprint-by-sprint look at how we got to where we are.
 ## Sprint 1
 Our primary focus during this sprint was to get the mechanical specifics of launching marbles working. We knew that consistently launching marbles would prove to be a fairly difficult task, so we decided to focus our efforts on that. In addition, we wanted to integrate the electrical and basic software components to have two working marble launchers by the end of the sprint.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OFr5i9Vk408" frameborder="0" allowfullscreen></iframe>
 
 ### Mechanical
 
@@ -88,7 +87,7 @@ For this sprint, we continued polishing and integrating all of our subsystems. W
 
 Dedicated to having a positive work environment, we made an anonymous survey for each of us to fill out with questions prompting "I like" and "I wish" statements. We discussed the results of this survey in one of our meetings and decided how we could address the negative aspects of our teaming process. One of the results of this was the "All-Play" part of our meetings. Before breaking off into individual tasks during meetings, we sat down and had an "All-Play," during which we brought up concerns relevant to the entire team and spoke about topics that we all needed to give feedback on.
 
-For the second week of the sprint, we planned another team bonding activity in Boston. Our team outing in Sprint 2 went very well and helped our productivity, so we wanted to do something similar in this sprint. 
+For the second week of the sprint, we planned another team bonding activity in Boston. Our team outing in Sprint 2 went very well and helped our productivity, so we wanted to do something similar in this sprint.
 
 ### Issues
 

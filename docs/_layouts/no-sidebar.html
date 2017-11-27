@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<!--
+	Escape Velocity by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>{{page.title}} - Jukebox Heroes</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body class="no-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper" class="wrapper">
+					<div id="header">
+
+						<!-- Logo -->
+							<div id="logo">
+								<h1><a href="index.html">Jukebox Heroes</a></h1>
+								<p>Building a mechanical jukebox.</p>
+							</div>
+
+						<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								{% for page in site.pages %}
+									{% if page.path != "feed.xml" and page.path != "assets/main.scss" %}
+										{% assign path_name = page.path | remove: ".md" %}
+										<li><a href={{path_name}}>{{page.title}}</a></li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</nav>
+
+					</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style2">
+					<div class="title">{{page.title}}</div>
+					<div id="main" class="container">
+
+						<!-- Content -->
+							<div id="content">
+								<article class="box post">
+
+									<a href="#" class="image featured">
+										{% assign page_name = "images/" | append: page.path %}
+										<img src={{page_name | replace: "md", "jpg" }} alt="" />
+									</a>
+									{{content}}
+								</article>
+
+
+							</div>
+
+					</div>
+				</div>
+
+
+				<!-- Footer -->
+					<div id="footer-wrapper" class="wrapper">
+						<div class="title">Follow Us</div>
+						<div id="features" class="container">
+
+									<!-- Contact -->
+										<section class="feature-list">
+											<div class="row">
+												<div class="6u 12u(mobile)">
+														<h3 class="icon fa-github" id="icon">
+															<a href="http://github.com/mpbrucker/PoEJukeboxHeroes">Github</a>
+														</h3>
+												</div>
+												<div class="6u 12u(mobile)" id="icon">
+														<h3 class="icon fa-instagram">
+															<a href="http://instagram.com/poejukeboxhero17">Instagram</a>
+														</h3>
+												</div>
+											</div>
+										</section>
+						</div>
+						<div id="copyright">
+							<ul>
+								<li>&copy; Jukebox Heroes</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/skel-viewport.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
