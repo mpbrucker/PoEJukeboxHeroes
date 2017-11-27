@@ -2,6 +2,7 @@
 layout: no-sidebar
 title: Software Subsystem
 description: The code that makes the music happen.
+category: subsystem
 ---
 
 The software brings together all the components of the jukebox - taking in user input, processing the notes of the song, controlling the timing of the notes, and actuating the mechanical components to actually play the notes.

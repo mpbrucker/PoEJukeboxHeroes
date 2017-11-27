@@ -116,10 +116,6 @@
 										</div>
 									</div>
 								</div>
-								<ul class="actions actions-centered">
-									<li><a href="#" class="button style1 big">Get Started</a></li>
-									<li><a href="#" class="button style2 big">More Info</a></li>
-								</ul>
 							</section>
 
 					</div>
@@ -131,7 +127,7 @@
 					<div id="highlights" class="container">
 						<div class="row 150%">
 						{% for page in site.pages %}
-							{% if page.path != "feed.xml" and page.path != "assets/main.scss" %}
+							{% if page.category == "subsystem" %}
 								<div class="4u 12u(mobile)">
 									<section class="highlight">
 										{% assign page_name = "images/" | append: page.path %}
@@ -160,12 +156,12 @@
 										<div class="row">
 											<div class="6u 12u(mobile)">
 													<h3 class="icon fa-github" id="icon">
-														<a href="github.com/mpbrucker/PoEJukeboxHeroes">Github</a>
+														<a href="http://github.com/mpbrucker/PoEJukeboxHeroes">Github</a>
 													</h3>
 											</div>
 											<div class="6u 12u(mobile)" id="icon">
 													<h3 class="icon fa-instagram">
-														<a href="instagram.com/poejukeboxhero17">Instagram</a>
+														<a href="http://instagram.com/poejukeboxhero17">Instagram</a>
 													</h3>
 											</div>
 										</div>

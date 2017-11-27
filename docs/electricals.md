@@ -2,6 +2,7 @@
 layout: default
 title: Electrical Subsystem
 description: Overview of each of the electrical subsystems.
+category: subsystem
 ---
 # Electrical Subsystems
 ![Circuit Diagram of Electrical System](images/circuit_diagram.jpg)
