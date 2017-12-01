@@ -21,7 +21,6 @@ Options options;
 int     debugQ = 0;             // use with --debug option
 int     maxcount = 100000;
 double  tempo = 60.0;
-int songselected = -1;
 
 // function declarations:
 string      convertMidiFileToText (MidiFile& midifile);
@@ -34,13 +33,30 @@ string      parseNote        (int pin, int dur);
 int main(int argc, char* argv[]) {
   wiringPiSetup();
   pinMode(7, INPUT);
+  pinMode(0, INPUT);
+  pinMode(2, INPUT);
+ // while (true) {
+  string songSelect = "";
   // Wait for button input
-  while (songselected == -1) {
-    bool buttonstatus = digitalRead(7);
-    if (buttonstatus) {
-      songselected = 0;
+  while (songSelect == "") {
+    bool button1Status = digitalRead(7);
+    bool button2Status = digitalRead(0);
+    bool button3Status = digitalRead(2);
+    if (button1Status) {
+      songSelect = "/home/pi/Documents/PoEJukeboxHeroes/twinkle_twinkle.mid";
+    }
+    else if (button2Status) {
+      songSelect = "/home/pi/Documents/PoEJukeboxHeroes/mary_had_a_little_lamb_pno.mid";
+    }
+    else if (button3Status) {
+      songSelect = "/home/pi/Documents/PoEJukeboxHeroes/three_blind_mice_pno.mid";
     }
   }
+
+  MidiFile midifile(songSelect);
+  string outStr = convertMidiFileToText(midifile);
+  cout << songSelect << endl;
+  cout << outStr << endl;
 
   // Open serial port and set options
   SerialPort mySerial("/dev/ttyACM0");
@@ -57,17 +73,16 @@ int main(int argc, char* argv[]) {
     }
   }
 
-  usleep(5000000); // Wait for serial to reset
+  usleep(3000000); // Wait for serial to reset
   cout << "Sleeping" << endl;
 
-  //mySerial.Write("8x0y8x1000y");
+  //mySerial.Write("1x0y1x600y5x1200y5x1800y6x2400y6x3000y5x3600y4x4800y4x5400y3x6000y3x6600y2x7200y2x7800y1x8400y5x9600y5x10200y4x10800y4x11400y3x12000y3x12600y2x13200y5x14400y5x15000y4x15600y4x16200y3x16800y3x17400y2x18000y1x19200y1x19800y5x20400y5x21000y6x21600y6x22200y5x22800y4x24000y4x24600y3x25200y3x25800y2x26400y2x27000y1x27600y");
 
-  options.process(argc, argv);
-  MidiFile midifile(options.getArg(1));
-  string outStr = convertMidiFileToText(midifile);
-  cout << outStr << endl;
+  //options.process(argc, argv);
   mySerial.Write(outStr);
+  usleep(28000000);
   mySerial.Close();
+  //}
   return 0;
 }
 
