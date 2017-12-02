@@ -2,6 +2,7 @@
 layout: default
 title: About Us
 description: Introduction to the team
+category: process
 ---
 
 ## About Us

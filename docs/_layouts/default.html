@@ -40,7 +40,7 @@
 
 			<!-- Intro -->
 				<div id="intro-wrapper" class="wrapper style1">
-					<div class="title">The Introduction</div>
+					<div class="title">Our Project</div>
 					<section id="intro" class="container">
 						<p class="style1">So in case you were wondering what this is all about ...</p>
 						<p class="style2">
@@ -56,95 +56,77 @@
 					</section>
 				</div>
 
+		<!-- Highlights -->
+			<div class="wrapper style3">
+				<div class="title">Subsystems</div>
+				<div id="highlights" class="container">
+					<div class="row 150%">
+					{% for page in site.pages %}
+						{% if page.category == "subsystem" %}
+							<div class="4u 12u(mobile)">
+								<section class="highlight">
+									{% assign page_name = "images/" | append: page.path %}
+									{% assign path_name = page.path | remove: ".md" %}
+									<a href={{path_name}} class="image featured"><img src={{page_name | replace: "md", "jpg" }} alt="" /></a>
+									<h3><a href={{path_name}}>{{page.title}}</a></h3>
+									<p>{{page.description}}</p>
+									<ul class="actions">
+										<li><a href={{path_name}} class="button style1">Learn More</a></li>
+									</ul>
+								</section>
+							</div>
+						{% endif %}
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+
 			<!-- Main -->
 				<div class="wrapper style2">
-					<div class="title">Learn More</div>
+					<div class="title">Our Process</div>
 					<div id="main" class="container">
 
-						<!-- Image -->
-							<a href="#" class="image featured">
-								<img src="images/pic01.jpg" alt="" />
-							</a>
-
 						<!-- Features -->
+
 							<section id="features">
+
 								<header class="style1">
-									<h2>Dolor consequat feugiat amet veroeros</h2>
-									<p>Feugiat dolor nullam orci pretium phasellus justo</p>
+									<h2>How we got to where we are.</h2>
+									<p>A look into the process we took through our eight-week project.</p>
 								</header>
+
 								<div class="feature-list">
-									<div class="row">
-										<div class="6u 12u(mobile)">
-											<section>
-												<h3 class="icon fa-comment">Mattis velit diam vulputate</h3>
-												<p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-											</section>
-										</div>
-										<div class="6u 12u(mobile)">
-											<section>
-												<h3 class="icon fa-refresh">Lorem ipsum dolor sit veroeros</h3>
-												<p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-											</section>
-										</div>
-									</div>
-									<div class="row">
-										<div class="6u 12u(mobile)">
-											<section>
-												<h3 class="icon fa-picture-o">Pretium phasellus justo lorem</h3>
-												<p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-											</section>
-										</div>
-										<div class="6u 12u(mobile)">
-											<section>
-												<h3 class="icon fa-cog">Tempus sed pretium orci</h3>
-												<p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-											</section>
-										</div>
-									</div>
-									<div class="row">
-										<div class="6u 12u(mobile)">
-											<section>
-												<h3 class="icon fa-wrench">Aliquam consequat et feugiat</h3>
-												<p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-											</section>
-										</div>
-										<div class="6u 12u(mobile)">
-											<section>
-												<h3 class="icon fa-check">Dolore laoreet aliquam mattis</h3>
-												<p>Eget mattis at, laoreet vel et velit aliquam diam ante, aliquet sit amet vulputate. Eget mattis at, laoreet vel velit lorem.</p>
-											</section>
-										</div>
-									</div>
+									{% assign idx = 0 %}
+									{% for page in site.pages %}
+										{% if page.category == "process" %}
+											{% assign test_val = idx | modulo:2 %}
+											{% if test_val == 0 %}
+												<div class="row">
+													<div class="6u 12u(mobile)">
+														<section>
+															<h3 class="icon fa-{{page.icon}}">{{page.title}}</h3>
+															<p>{{page.description}}</p>
+														</section>
+													</div>
+											{% else %}
+													<div class="6u 12u(mobile)">
+														<section>
+															<h3 class="icon fa-{{page.icon}}">{{page.title}}</h3>
+															<p>{{page.description}}</p>
+														</section>
+													</div>
+												</div>
+											{% endif %}
+											{% assign idx = idx | plus:1 %}
+										{% endif %}
+									{% endfor %}
 								</div>
 							</section>
 
 					</div>
 				</div>
 
-			<!-- Highlights -->
-				<div class="wrapper style3">
-					<div class="title">Subsystems</div>
-					<div id="highlights" class="container">
-						<div class="row 150%">
-						{% for page in site.pages %}
-							{% if page.category == "subsystem" %}
-								<div class="4u 12u(mobile)">
-									<section class="highlight">
-										{% assign page_name = "images/" | append: page.path %}
-										{% assign path_name = page.path | remove: ".md" %}
-										<a href={{path_name}} class="image featured"><img src={{page_name | replace: "md", "jpg" }} alt="" /></a>
-										<h3><a href={{path_name}}>{{page.title}}</a></h3>
-										<p>{{page.description}}</p>
-										<ul class="actions">
-											<li><a href={{path_name}} class="button style1">Learn More</a></li>
-										</ul>
-									</section>
-								</div>
-							{% endif %}
-						{% endfor %}
-						</div>
-					</div>
-				</div>
+
 
 			<!-- Footer -->
 				<div id="footer-wrapper" class="wrapper">

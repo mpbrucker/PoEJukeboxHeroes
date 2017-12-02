@@ -1,3 +1,13 @@
+a {
+  color: rgb(255, 255, 255);
+}
+
+
+#header-wrapper {
+  background: url("images/background2.jpg");
+  background-size: cover;
+}
+
 #footer-wrapper {
   padding: 40px 0px 0px 0px;
 }
@@ -12,4 +22,8 @@
 
 #icon {
   text-align: center;
+}
+
+img {
+  max-width: 100%;
 }

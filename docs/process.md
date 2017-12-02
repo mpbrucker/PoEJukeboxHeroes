@@ -2,6 +2,7 @@
 layout: default
 title: Our Process
 description: A sprint-by-sprint look at how we got to where we are.
+category: process
 ---
 
 ## Sprint 1

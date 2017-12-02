@@ -2,6 +2,7 @@
 layout: default
 title: Our Timeline
 description: A general overview of the timeline for our project, broken down into sprints.
+category: process
 ---
 
 ## Timeline
