@@ -26,8 +26,9 @@
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
+									<li><a href="/">Home</a></li>
 									{% for page in site.pages %}
-										{% if page.path != "feed.xml" and page.path != "assets/main.scss" %}
+										{% if page.path != "feed.xml" and page.path != "assets/main.scss" and page.title != "Home" %}
 											{% assign path_name = page.path | remove: ".md" %}
 											<li><a href={{path_name}}>{{page.title}}</a></li>
 										{% endif %}
@@ -44,20 +45,17 @@
 					<section id="intro" class="container">
 						<p class="style1">So in case you were wondering what this is all about ...</p>
 						<p class="style2">
-							Escape Velocity is a free responsive<br class="mobile-hide" />
-							site template by <a href="http://html5up.net" class="nobr">HTML5 UP</a>
+							We built a mechanical jukebox in eight weeks.
 						</p>
-						<p class="style3">It's <strong>responsive</strong>, built on <strong>HTML5</strong> and <strong>CSS3</strong>, and released for
-						free under the <a href="http://html5up.net/license">Creative Commons Attribution 3.0 license</a>, so use it for any of
-						your personal or commercial projects &ndash; just be sure to credit us!</p>
+						<p class="style3">Find out how we did what we did.</p>
 						<ul class="actions">
-							<li><a href="#" class="button style3 big">Proceed</a></li>
+							<li><a href="#subsystems" class="button style3 big">Proceed</a></li>
 						</ul>
 					</section>
 				</div>
 
 		<!-- Highlights -->
-			<div class="wrapper style3">
+			<div class="wrapper style3" id="subsystems">
 				<div class="title">Subsystems</div>
 				<div id="highlights" class="container">
 					<div class="row 150%">
@@ -67,7 +65,7 @@
 								<section class="highlight">
 									{% assign page_name = "images/" | append: page.path %}
 									{% assign path_name = page.path | remove: ".md" %}
-									<a href={{path_name}} class="image featured"><img src={{page_name | replace: "md", "jpg" }} alt="" /></a>
+									<a href={{path_name}} class="image featured" style="background:url({{page_name | replace: "md", "jpg" }})"></a>
 									<h3><a href={{path_name}}>{{page.title}}</a></h3>
 									<p>{{page.description}}</p>
 									<ul class="actions">
@@ -99,19 +97,20 @@
 									{% assign idx = 0 %}
 									{% for page in site.pages %}
 										{% if page.category == "process" %}
+											{% assign path_name = page.path | remove: ".md" %}
 											{% assign test_val = idx | modulo:2 %}
 											{% if test_val == 0 %}
 												<div class="row">
 													<div class="6u 12u(mobile)">
 														<section>
-															<h3 class="icon fa-{{page.icon}}">{{page.title}}</h3>
+															<h3 class="icon fa-{{page.icon}}"><a href={{path_name}}>{{page.title}}</a></h3>
 															<p>{{page.description}}</p>
 														</section>
 													</div>
 											{% else %}
 													<div class="6u 12u(mobile)">
 														<section>
-															<h3 class="icon fa-{{page.icon}}">{{page.title}}</h3>
+															<h3 class="icon fa-{{page.icon}}"><a href={{path_name}}>{{page.title}}</a></h3>
 															<p>{{page.description}}</p>
 														</section>
 													</div>

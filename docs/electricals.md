@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: no-sidebar
 title: Electrical Subsystem
 description: Overview of each of the electrical subsystems.
 category: subsystem

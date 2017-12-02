@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: no-sidebar
 title: Our Process
 description: A sprint-by-sprint look at how we got to where we are.
 category: process
+icon: gears
 ---
 
 

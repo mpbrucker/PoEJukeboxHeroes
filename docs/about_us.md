@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: no-sidebar
 title: About Us
 description: Introduction to the team
 category: process
+icon: users
 ---
 
 ## About Us

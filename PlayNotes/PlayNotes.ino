@@ -1,23 +1,34 @@
-
-#import "Note.h"
+#include <Wire.h>
+#include <Adafruit_MotorShield.h>
+#include "utility/Adafruit_MS_PWMServoDriver.h"
 
 const int SOLENOID_DELAY = 20; // The amount of time to keep the solenoid extended (ms)
 bool isPlaying = false;
 
+Adafruit_MotorShield AFMS = Adafruit_MotorShield();
+Adafruit_DCMotor *myMotor = AFMS.getMotor(1);
+
 
 void setup() {
+  AFMS.begin();
   Serial.begin(115200);
-  for (int i = 1; i <= 13; i++) {
+  for (int i = 2; i <= 13; i++) {
     pinMode(i, OUTPUT);
     digitalWrite(i, LOW);
   }
+  myMotor->setSpeed(50);
+  myMotor->run(FORWARD);
 
 }
 
 void loop() {
   while (!Serial.available()) { // Wait for something on serial port
   }
-  String strIn = Serial.readString(); // Read in what's on the serial port
+  String strIn = Serial.readString();  //Read in what's on the serial port
+//  Serial.end();
+//  pinMode(1, OUTPUT);
+//  digitalWrite(1, LOW);
+//  delay(100);
 
   int inLen = 0;
   for (int i = 0; i < strIn.length(); i++) {

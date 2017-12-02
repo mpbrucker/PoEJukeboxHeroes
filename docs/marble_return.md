@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: no-sidebar
 title: Marble Return Mechanism
 description: Overview of marble return mechanism and design process.
 ---

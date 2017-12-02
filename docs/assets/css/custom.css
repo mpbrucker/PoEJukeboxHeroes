@@ -1,7 +1,18 @@
-a {
-  color: rgb(255, 255, 255);
+img {
+  max-width: 100%;
+  max-height: 300px;
+  align: center;
 }
 
+.icon:hover {
+  color: rgba(233, 119, 112, 0.72) !important;
+}
+
+.featured {
+  background-size: cover !important;
+  min-height: 200px;
+  background-position: center center;
+}
 
 #header-wrapper {
   background: url("images/background2.jpg");
@@ -22,8 +33,4 @@ a {
 
 #icon {
   text-align: center;
-}
-
-img {
-  max-width: 100%;
 }
