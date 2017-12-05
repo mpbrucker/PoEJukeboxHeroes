@@ -11,7 +11,7 @@ class Note
   public:
     Note(int frequency, int duration);
     Note();
-    
+
     int getFreq();
     int getDur();
 

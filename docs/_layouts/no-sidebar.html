@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>{{page.title}} - Jukebox Heroes</title>
+		<title>{{page.title}} - {{sie.title}}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -30,8 +30,9 @@
 						<!-- Nav -->
 						<nav id="nav">
 							<ul>
+								<li><a href="/">Home</a></li>
 								{% for page in site.pages %}
-									{% if page.path != "feed.xml" and page.path != "assets/main.scss" %}
+									{% if page.path != "feed.xml" and page.path != "assets/main.scss" and page.title != "Home" %}
 										{% assign path_name = page.path | remove: ".md" %}
 										<li><a href={{path_name}}>{{page.title}}</a></li>
 									{% endif %}
@@ -50,11 +51,8 @@
 						<!-- Content -->
 							<div id="content">
 								<article class="box post">
-
-									<a href="#" class="image featured">
-										{% assign page_name = "images/" | append: page.path %}
-										<img src={{page_name | replace: "md", "jpg" }} alt="" />
-									</a>
+									{% assign page_name = "images/" | append: page.path %}
+									<a href=# class="image featured" style="background:url({{page_name | replace: "md", "jpg" }})"></a>
 									{{content}}
 								</article>
 

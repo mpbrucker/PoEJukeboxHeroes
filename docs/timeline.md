@@ -1,7 +1,9 @@
 ---
-layout: default
+layout: no-sidebar
 title: Our Timeline
 description: A general overview of the timeline for our project, broken down into sprints.
+category: process
+icon: calendar
 ---
 
 ## Timeline
