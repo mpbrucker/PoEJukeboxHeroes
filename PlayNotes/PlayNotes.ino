@@ -7,7 +7,7 @@ bool isPlaying = false;
 
 void setup() {
   Serial.begin(115200);
-  for (int i = 1; i <= 13; i++) {
+  for (int i = 2; i <= 14; i++) {
     pinMode(i, OUTPUT);
     digitalWrite(i, LOW);
   }
@@ -18,7 +18,6 @@ void loop() {
   while (!Serial.available()) { // Wait for something on serial port
   }
   String strIn = Serial.readString(); // Read in what's on the serial port
-
   int inLen = 0;
   for (int i = 0; i < strIn.length(); i++) {
     if (strIn[i] == 'x') {
