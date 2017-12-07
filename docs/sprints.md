@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: no-sidebar
 title: Our Process
 description: A sprint-by-sprint look at how we got to where we are.
 ---
@@ -154,7 +154,7 @@ By the time we presented our Minimum Viable Product, we had achieved 3/5 of our 
 
 ### Mechanical
 
-To attain our deliverable, we designed a better scraping mechanism and added a back railing to the jukebox structure to prevent marbles from falling off the top platform.  We decided against marble channeling, but did design small triangular pieces to add onto the top platform in order to ensure that only one marble was entering a chute at a time. 
+To attain our deliverable, we designed a better scraping mechanism and added a back railing to the jukebox structure to prevent marbles from falling off the top platform.  We decided against marble channeling, but did design small triangular pieces to add onto the top platform in order to ensure that only one marble was entering a chute at a time.
 
 ### Electrical and Software
 
@@ -162,7 +162,7 @@ For the electrical and software systems, we worked on organizing and cleaning up
 
 ### Aesthetics
 
-This time around, we spent more time on our jukebox's look. After sanding the entire structure, we spray painted specific ridges on the darkly stained enclosure to evoke feelings of nostalgia in our users. We rastered our names onto a small piece of plywood to attach to the side of the jukebox to as our final mark on our project. 
+This time around, we spent more time on our jukebox's look. After sanding the entire structure, we spray painted specific ridges on the darkly stained enclosure to evoke feelings of nostalgia in our users. We rastered our names onto a small piece of plywood to attach to the side of the jukebox to as our final mark on our project.
 
 ### Team Health
 
