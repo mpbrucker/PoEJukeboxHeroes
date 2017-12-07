@@ -35,7 +35,22 @@ int main(int argc, char* argv[]) {
   pinMode(7, INPUT);
   pinMode(0, INPUT);
   pinMode(2, INPUT);
- // while (true) {
+  SerialPort mySerial("/dev/ttyACM0");
+  while (true) {
+    try {
+      mySerial.Open();
+      mySerial.SetBaudRate(SerialPort::BAUD_115200);
+      mySerial.SetParity(SerialPort::PARITY_NONE);
+      mySerial.SetFlowControl(SerialPort::FLOW_CONTROL_NONE);
+      break;
+    } catch (SerialPort::OpenFailed exc) {
+      cout << "Port not found" << endl;
+      usleep(1000000);
+    }
+  }
+  cout << "Serial connection established." << endl;
+  while (true) {
+  cout << "Waiting for song selection." << endl;
   string songSelect = "";
   // Wait for button input
   while (songSelect == "") {
@@ -59,19 +74,6 @@ int main(int argc, char* argv[]) {
   cout << outStr << endl;
 
   // Open serial port and set options
-  SerialPort mySerial("/dev/ttyACM0");
-  while (true) {
-    try {
-      mySerial.Open();
-      mySerial.SetBaudRate(SerialPort::BAUD_115200);
-      mySerial.SetParity(SerialPort::PARITY_NONE);
-      mySerial.SetFlowControl(SerialPort::FLOW_CONTROL_NONE);
-      break;
-    } catch (SerialPort::OpenFailed exc) {
-      cout << "Port not found" << endl;
-      usleep(1000000);
-    }
-  }
 
   usleep(3000000); // Wait for serial to reset
   cout << "Sleeping" << endl;
@@ -80,9 +82,9 @@ int main(int argc, char* argv[]) {
 
   //options.process(argc, argv);
   mySerial.Write(outStr);
-  usleep(28000000);
+  usleep(30000000);
+  }
   mySerial.Close();
-  //}
   return 0;
 }
 
