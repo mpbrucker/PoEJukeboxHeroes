@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>{{page.title}} - {{sie.title}}</title>
+		<title>{{page.title}} - {{site.title}}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -30,7 +30,7 @@
 						<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="/">Home</a></li>
+								<li><a href={{site.baseurl}}>Home</a></li>
 								{% for page in site.pages %}
 									{% if page.path != "feed.xml" and page.path != "assets/main.scss" and page.title != "Home" %}
 										{% assign path_name = page.path | remove: ".md" %}
