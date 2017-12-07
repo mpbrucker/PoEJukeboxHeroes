@@ -1,6 +1,6 @@
 ---
 layout: no-sidebar
-title: Hardware Subsystem
+title: Mechanical Subsystem
 description: Hardware.
 category: subsystem
 ---
