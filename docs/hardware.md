@@ -5,7 +5,12 @@ description: Hardware.
 category: subsystem
 ---
 
-## Marble Release Mechanism
+
+Within our jukebox, there are three mechanical subsystems: the enclosure, the marble chutes, and the marble return. The enclosure looks like a jukebox, and integrates all mechanical and electrical subsystems. The marble chutes allow the solenoids to accurately drop one marble at a time onto the corresponding xylophone note below. The marble return carries the marbles from the bottom of the enclosure to the top.  
+
+## Enclosure Subsystem  
+
+## Marble Release Mechanism  
 
 The task of releasing one marble at a time was not a trivial one. Almost everyone in the group had a turn with it, and the system went through about 20 redesigns before a successful ramp was made. The main feature that proved this mechanism’s challenge was consistency of singular release. In order to do this, we decided to use a solenoid that activates through a hole in the ramp. With this in mind, the shape of the ramp was formed.  
 
