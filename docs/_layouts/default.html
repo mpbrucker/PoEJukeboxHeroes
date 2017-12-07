@@ -31,6 +31,15 @@
 										{% if page.path != "feed.xml" and page.path != "assets/main.scss" and page.title != "Home" %}
 											{% assign path_name = page.path | remove: ".md" %}
 											<li><a href={{path_name}}>{{page.title}}</a></li>
+											{% if page.title == "Hardware Subsystem" %}
+											<ul>
+												{% for page in site.pages %}
+													{% if page.type == "subpage"}
+															<li><a href={{path_name}}>{{page.title}}</a></li>
+													{% endif %}
+												{% endfor %}
+											</ul>
+											{% endif %}
 										{% endif %}
 									{% endfor %}
 								</ul>
