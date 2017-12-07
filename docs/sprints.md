@@ -1,9 +1,7 @@
 ---
-layout: no-sidebar
+layout: default
 title: Our Process
-description: A look at our goals, progress, and process that we took through each sprint of the project.
-category: process
-icon: gears
+description: A sprint-by-sprint look at how we got to where we are.
 ---
 
 
@@ -101,17 +99,18 @@ Mechanical Design Decisions:
   * Thick vs. **thin**  
   * Sprocket vs. **pulley**  
 
-Here, we chose to ANNIE WRITES THIS PART.  
+We examined belt size and pulley size in order to have a properly tensioned belt that cycles marbles from the bottom of the enclosure to the top. We chose the belt and pulley sizes based on available belt lengths and the distance between the marble collection system and the top marble plate. Due to our choice for the type of belt, the availability of belt lengths was limited. We weighed the pros and cons of a v-belt (a very thick belt), a timing belt (a belt with horizontal grooves), and a serpentine belt (thin belt) and ultimately decided to use a serpentine belt for its flexibility in conjunction with a simple pulley for driving.   
 
 * Scraping mechanism:  
   * **Simple** vs. wiper  
 
-For the scraping mechanism, we chose a simpler design that was meant to be a stiff board that the marbles would be pushed off of. The wiper design was more time-intensive and for this sprint, we decided not to use it. The ball return system was functional, but it was not as efficient as we envisioned it.  
+For the duration of this sprint, we were interested in a rudimentary marble scraping mechanism for removing the marbles from the belt at the top of the system. We aimed for simplicity here and made the scraping mechanism a specifically sized hole in the top marble plate that passively removed marbles from the belt as they passed through. The design of this slot had not been optimized for marble removal, thus making it a notable task for Sprint 4.
+The wiper design was more time-intensive and for this sprint, we decided not to use it. The ball return system was functional, but it was not as efficient as we envisioned it.  
 
 * Motor choice:  
   * **Torque** vs. speed  
 
- The motors we chose between were ANNIE WRITES THIS PART.  
+ We tested two different motors and determined that opting for the motor with more torque and less speed was most suitable for the marble return system.  
 
 The biggest technical risk we identified moving forward into Sprint 4 was the marble return system. After running our MVP through multiple tests, we decided there needed to be a back railing on the upper portion of the structure to keep marbles from falling backward instead of rolling toward the chutes. This detail was added to our Sprint 4 deliverable. The scraping mechanism we opted for in this sprint was simple. Due to its simplicity, it was also unreliable and the marbles were not evenly dispersed between chutes. Our solution for this concern was to perform longer periods of testing of the ball return and to use a wiper to disperse the marbles more evenly among the chutes.  
 
@@ -155,14 +154,16 @@ By the time we presented our Minimum Viable Product, we had achieved 3/5 of our 
 
 ### Mechanical
 
-### Electrical
+To attain our deliverable, we designed a better scraping mechanism and added a back railing to the jukebox structure to prevent marbles from falling off the top platform.  We decided against marble channeling, but did design small triangular pieces to add onto the top platform in order to ensure that only one marble was entering a chute at a time. 
 
+### Electrical and Software
 
-### Software
+For the electrical and software systems, we worked on organizing and cleaning up the wiring for the various circuits and solenoids.  After consolidating power sources, our jukebox now needs two power sources instead of three. The last task we addressed was further detailing our documentation of the two systems.  
 
+### Aesthetics
+
+This time around, we spent more time on our jukebox's look. After sanding the entire structure, we spray painted specific ridges on the darkly stained enclosure to evoke feelings of nostalgia in our users. We rastered our names onto a small piece of plywood to attach to the side of the jukebox to as our final mark on our project. 
 
 ### Team Health
 
 For the second week of the sprint, we planned another team bonding activity in Boston. Our team outing in Sprint 2 went very well and increased our productivity, so we wanted to do something similar in this sprint. We also recognized that we would be in the throes of finals season and knew we would need a mental break.  
-
-### Issues
