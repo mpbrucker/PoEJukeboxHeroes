@@ -1,7 +1,7 @@
 ---
 layout: no-sidebar
 title: About Us
-description: Introduction to the team
+description: Meet the five Jukebox Heroes who made the project happen.
 category: process
 icon: users
 ---

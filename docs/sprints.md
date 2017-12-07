@@ -1,7 +1,9 @@
 ---
 layout: no-sidebar
 title: Our Process
-description: A sprint-by-sprint look at how we got to where we are.
+description: A look at our goals, progress, and process that we took through each sprint of the project.
+category: process
+icon: gears
 ---
 
 
