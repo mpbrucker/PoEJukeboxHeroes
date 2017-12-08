@@ -12,11 +12,7 @@ Adafruit_DCMotor *myMotor = AFMS.getMotor(1);
 void setup() {
   AFMS.begin();
   Serial.begin(115200);
-<<<<<<< HEAD
   for (int i = 2; i <= 14; i++) {
-=======
-  for (int i = 2; i <= 13; i++) {
->>>>>>> 7528c46ca6a3e68e7b7e7a98290438beec872487
     pinMode(i, OUTPUT);
     digitalWrite(i, LOW);
   }
@@ -28,16 +24,8 @@ void setup() {
 void loop() {
   while (!Serial.available()) { // Wait for something on serial port
   }
-<<<<<<< HEAD
-  String strIn = Serial.readString(); // Read in what's on the serial port
-=======
-  String strIn = Serial.readString();  //Read in what's on the serial port
-//  Serial.end();
-//  pinMode(1, OUTPUT);
-//  digitalWrite(1, LOW);
-//  delay(100);
 
->>>>>>> 7528c46ca6a3e68e7b7e7a98290438beec872487
+  String strIn = Serial.readString();  //Read in what's on the serial port
   int inLen = 0;
   for (int i = 0; i < strIn.length(); i++) {
     if (strIn[i] == 'x') {

@@ -1,7 +1,7 @@
 ---
 layout: no-sidebar
 title: Mechanical Subsystem
-description: Hardware.
+description: The hardware under the hood of our mechanical jukebox.
 category: subsystem
 ---
 
@@ -29,5 +29,3 @@ At first, when we believed that the ramp alone would ensure consistency, the sol
 ![The ramp and solenoid holder assembly.](/mech1.jpg)
 
 ## Aesthetic Inspirations
-
-

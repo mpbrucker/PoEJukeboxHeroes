@@ -2,9 +2,12 @@
 layout: no-sidebar
 title: Our Process
 description: A sprint-by-sprint look at how we got to where we are.
+category: process
+icon: gear
 ---
 
-
+## Project Overview  
+For this project, we were presented with the task of designing a mechatronic system. This system must include both a nontrivial mechanical system design and fabrication and a nontrivial electronic system involving hardware and firmware aspects. Based off of these instructions, every student taking Principles of Engineering filled out a teaming survey that had questions about which project ideas the students were interested in and what teaming and engineering skills they have. Using those responses, teams of three to five members were formed, and thus Jukebox Heroes was born. We all shared an interest in making a jukebox of some sort. Since three of our members are mechanical engineers, we decided to move forward with a more mechanical jukebox.
 
 ## Sprint 1
 Our primary focus during this sprint was to get the mechanical specifics of launching marbles working. We knew that consistently launching marbles would prove to be a fairly difficult task, so we decided to focus our efforts on that aspect of the design. In addition, we wanted to integrate basic electrical and software components to have two working marble launchers by the end of the sprint.  
