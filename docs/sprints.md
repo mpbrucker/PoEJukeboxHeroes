@@ -88,7 +88,7 @@ To address our kaizen from Sprint 2, we defined what a point person is responsib
 
 ##### Sprint 3 Deliverable
 
-A **button-operated** jukebox with **13** marble chutes that plays **"Twinkle, Twinkle, Little Star" by launching marbles onto a xylophone with a **magnetic return system**.  
+A **button-operated** jukebox with **13** marble chutes that plays **"Twinkle, Twinkle, Little Star" by launching marbles onto a xylophone with a magnetic return system**.  
 
 ### Mechanical
 
