@@ -40,6 +40,8 @@ This sprint, we were able to get the basic note playing working via an Arduino. 
 
 Upon concluding Sprint 1, we established a team kaizen to keep in mind for Sprint 2. We assigned each team member to a certain task or system as a "point person." We also edited our Minimum Viable Product (MVP) description to make it more specific. To know we had achieved our MVP, we wrote that the jukebox would be able to play "Twinkle, Twinkle, Little Star"  hard-coded and use a magnetic return system to reset the marbles. After assessing our biggest technical risks, we decided that the marble chutes would be the best subsystem to face head-on in this sprint.  
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P3kJNiBI5nI" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> 
+
 ##### Sprint 2 Deliverable
 
 Mechanical jukebox that plays **six** notes by dropping marbles on a xylophone at a rhythm determined by a **user-selected MIDI file**, with an enclosure and **ball catch system**.  
@@ -81,6 +83,8 @@ Although we chose to split the work up based on who was the point person for a s
 ## Sprint 3 (Minimum Viable Product)
 
 To address our kaizen from Sprint 2, we defined what a point person is responsible for and how we should make final design decisions on the first day of Sprint 3. To highlight a couple key changes in our teaming process, we held two design reviews (one for the mechanical systems and one for aesthetics) and planned a team health discussion, which is described further in the Team Health section. Our first design review evaluated the mechanical structure and allowed us to all give feedback on the final designs of our various subsystems. The purpose of the aesthetics design review was to ensure we all had a clear vision of what our product would look like.  
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a6WiX90mLuc" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 ##### Sprint 3 Deliverable
 
