@@ -10,4 +10,16 @@ Within our jukebox, there are three mechanical subsystems: the enclosure, the ma
 
 
 <img class="img-large" src="images/FinalRender2.png">
+
 *Our final jukebox design, as shown in CAD.*
+
+
+Learn more about each of the components of our mechanical design:
+
+[Marble release](/chutes) - the chutes and solenoids that actually play the notes.
+
+[Marble return](/marble_return) - our system to return marbles to their original place.
+
+[Enclosure](/enclosure) - what holds everything together.
+
+[Aesthetics](/aesthetics) - How we made everything look nice.
