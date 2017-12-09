@@ -6,10 +6,10 @@ category: process
 icon: gear
 ---
 
-## Project Overview  
+# Project Overview  
 For this project, we were presented with the task of designing a mechatronic system. This system must include both a nontrivial mechanical system design and fabrication and a nontrivial electronic system involving hardware and firmware aspects. Based off of these instructions, every student taking Principles of Engineering filled out a teaming survey that had questions about which project ideas the students were interested in and what teaming and engineering skills they have. Using those responses, teams of three to five members were formed, and thus Jukebox Heroes was born. We all shared an interest in making a jukebox of some sort. Since three of our members are mechanical engineers, we decided to move forward with a more mechanical jukebox.
 
-## Sprint 1
+# Sprint 1
 Our primary focus during this sprint was to get the mechanical specifics of launching marbles working. We knew that consistently launching marbles would prove to be a fairly difficult task, so we decided to focus our efforts on that aspect of the design. In addition, we wanted to integrate basic electrical and software components to have two working marble launchers by the end of the sprint.  
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OFr5i9Vk408" frameborder="0" allowfullscreen></iframe>
@@ -36,7 +36,7 @@ The electrical design during this sprint was very straightforward. Since our mai
 
 This sprint, we were able to get the basic note playing working via an Arduino. We began by writing code to process messages from the Arduino's serial port, then utilized that message to actuate the solenoids at specified times. We got a basic version working, but not without issues. We were unable to get more than one note to play simultaneously and every note still had to be manually input through the Arduino's serial monitor. We also wrote some preliminary code in C++ to process MIDI files and send them to the Arduino through serial.  
 
-## Sprint 2
+# Sprint 2
 
 Upon concluding Sprint 1, we established a team kaizen to keep in mind for Sprint 2. We assigned each team member to a certain task or system as a "point person." We also edited our Minimum Viable Product (MVP) description to make it more specific. To know we had achieved our MVP, we wrote that the jukebox would be able to play "Twinkle, Twinkle, Little Star"  hard-coded and use a magnetic return system to reset the marbles. After assessing our biggest technical risks, we decided that the marble chutes would be the best subsystem to face head-on in this sprint.  
 
@@ -80,7 +80,7 @@ We were not able to work on the marble return system as much as we would have li
 
 Although we chose to split the work up based on who was the point person for a specific task or system, our communication lacked in this sprint. We had not clearly defined the roles and responsibilities of a point person, so each of us made design decisions and without necessarily informing the rest of the team. This made integration difficult because we had different expectations. Our kaizen for this sprint was to communicate before subsystems before committing to a design so that we would all be on the same page before moving forward.  
 
-## Sprint 3 (Minimum Viable Product)
+# Sprint 3 (Minimum Viable Product)
 
 To address our kaizen from Sprint 2, we defined what a point person is responsible for and how we should make final design decisions on the first day of Sprint 3. To highlight a couple key changes in our teaming process, we held two design reviews (one for the mechanical systems and one for aesthetics) and planned a team health discussion, which is described further in the Team Health section. Our first design review evaluated the mechanical structure and allowed us to all give feedback on the final designs of our various subsystems. The purpose of the aesthetics design review was to ensure we all had a clear vision of what our product would look like.  
 
@@ -139,7 +139,7 @@ The most significant issues of this sprint besides the major technical risk were
 ![Key takeaways from Sprint 3.](images/teamwork_takeaways.png)
 
 
-## Sprint 4 (Stretch Goals and Aesthetics)
+# Sprint 4 (Aesthetics and Beyond)
 
 ##### Sprint 4 Deliverable
 
