@@ -12,7 +12,7 @@ Adafruit_DCMotor *myMotor = AFMS.getMotor(1);
 void setup() {
   AFMS.begin();
   Serial.begin(115200);
-  for (int i = 2; i <= 14; i++) {
+  for (int i = 2; i <= 15; i++) {
     pinMode(i, OUTPUT);
     digitalWrite(i, LOW);
   }
@@ -43,7 +43,11 @@ void loop() {
   for (int i = 0; i < strIn.length(); i++) { // Iterate through the input string
     char charIn = char(strIn[i]); // Get the current character
     if (charIn == 'x') {
-      pins[idx] = curString.toInt()+1; // If we reached the first delimiting character, update the frequencies
+      cur_note = curString.toInt()+1;
+      if (cur_note > 12) { // If we're using a pin higher than the 12th pin, move to the analog pins.
+        cur_note++;
+      }
+      pins[idx] =  // If we reached the first delimiting character, update the frequencies
       curString = ""; // Reset the current string
     }
     else if (charIn == 'y') {
@@ -60,6 +64,7 @@ void loop() {
   int deltaTime = millis() - timeStart;
   int prevDelta = 0;
   while (curNote != -1) {
+    
     int noteOut = playNotes(pins, times, curNote, inLen, deltaTime, prevDelta);
     curNote = noteOut;
     prevDelta = deltaTime; 

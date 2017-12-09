@@ -20,7 +20,7 @@ A **marble holder** with **two** chutes which launch marbles at a xylophone to a
 
 ### Mechanical
 
-![The solenoid circuit design.](/mech1.jpg)
+![The solenoid circuit design.](images/mech1.jpg)
 
 Over the course of this sprint, we went through quite a few iterations of our marble launcher designs. Early into the sprint, we chose to use solenoids to actuate the marble launching, as they provide the most precise timing for launching marbles. From that point, we prototyped, CADed, and 3D printed approximately 6 different iterations of chute designs, eventually ending up with one that worked fairly consistently. In addition, we built a basic frame that contained the marbles, held the xylophone, and attached to the marble chutes.  
 

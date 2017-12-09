@@ -5,6 +5,10 @@ img {
   margin: auto auto;
 }
 
+.img-large {
+  max-height: 800px !important;
+}
+
 .icon:hover {
   color: rgba(233, 119, 112, 0.72) !important;
 }
@@ -18,6 +22,7 @@ img {
 #header-wrapper {
   background: url("images/background2.jpg");
   background-size: cover;
+  background-position: center center;
 }
 
 #footer-wrapper {
