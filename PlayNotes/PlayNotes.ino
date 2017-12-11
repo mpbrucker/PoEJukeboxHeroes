@@ -1,27 +1,35 @@
 #include <Wire.h>
 #include <Adafruit_MotorShield.h>
 #include "utility/Adafruit_MS_PWMServoDriver.h"
+#include <Adafruit_NeoPixel.h>
+#ifdef __AVR__
+  #include <avr/power.h>
+#endif
 
 const int SOLENOID_DELAY = 20; // The amount of time to keep the solenoid extended (ms)
 bool isPlaying = false;
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 Adafruit_DCMotor *myMotor = AFMS.getMotor(1);
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(5, 14, NEO_GRBW + NEO_KHZ800);
 
 
 void setup() {
   AFMS.begin();
   Serial.begin(115200);
-  for (int i = 2; i <= 15; i++) {
+  for (int i = 2; i <= 17; i++) {
     pinMode(i, OUTPUT);
     digitalWrite(i, LOW);
   }
   myMotor->setSpeed(50);
   myMotor->run(FORWARD);
-
+  strip.setBrightness(255);
+  strip.begin();
+  colorWipe(strip.Color(255, 255, 255)); // White
 }
 
 void loop() {
+  colorWipe(strip.Color(255, 255, 255)); // White
   while (!Serial.available()) { // Wait for something on serial port
   }
 
@@ -43,11 +51,11 @@ void loop() {
   for (int i = 0; i < strIn.length(); i++) { // Iterate through the input string
     char charIn = char(strIn[i]); // Get the current character
     if (charIn == 'x') {
-      cur_note = curString.toInt()+1;
+      int cur_note = curString.toInt()+1;
       if (cur_note > 12) { // If we're using a pin higher than the 12th pin, move to the analog pins.
-        cur_note++;
+        cur_note+= 3;
       }
-      pins[idx] =  // If we reached the first delimiting character, update the frequencies
+      pins[idx] = cur_note; // If we reached the first delimiting character, update the frequencies
       curString = ""; // Reset the current string
     }
     else if (charIn == 'y') {
@@ -93,6 +101,14 @@ int playNotes(int pins[], int times[], int startNote, int numNotes, int curTime,
   } else {
 //    Serial.println("done");
     return -1; // We're done playing all of the notes
+  }
+}
+
+// Fill the dots one after the other with a color
+void colorWipe(uint32_t c) {
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
+    strip.setPixelColor(i, c);
+    strip.show();
   }
 }
 

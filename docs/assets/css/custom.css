@@ -6,7 +6,8 @@ img {
 }
 
 .img-large {
-  max-height: 800px !important;
+  min-height: 500px !important;
+  max-width: 100%;
 }
 
 .icon:hover {
