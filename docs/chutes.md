@@ -15,6 +15,10 @@ The initial two ramp designs were the L and the long ramp, shown above. The L li
 
 The most important aspect of the final ramp design was the manipulation of the solenoid’s angled position. While the ramp itself proved to be a well-engineered device, it alone did not determine whether the marble release was consistent. If the angle of the solenoid was changed, all while using the same ramp, the mechanism could go from releasing one marble to five.  
 
-At first, when we believed that the ramp alone would ensure consistency, the solenoids were attached with hot glue. While trying to determine whether the rest position of the solenoid would be extended or retracted, the solenoids would heat up and fall off if left retracted for too long. Thus, a holder was designed that angled the solenoids towards the front of the ramp, featured below, giving just enough length at full extension to push the marbles over the small hump.  
-
 ![The ramp and solenoid holder assembly.](images/final_chute_and_holder.png)
+
+At first, when we believed that the ramp alone would ensure consistency, the solenoids were attached with hot glue. While trying to determine whether the rest position of the solenoid would be extended or retracted, the solenoids would heat up and fall off if left retracted for too long. Thus, a holder was designed that angled the solenoids towards the front of the ramp, featured above, giving just enough length at full extension to push the marbles over the small hump.
+
+![The full assembly.](images/MarbleChutes.png)
+
+The thirteen chute assemblies are attached to the marble holder ramp, as shown above. The marble holder has channels in it designed to only allow one marble into the chute at a time, with rounded ends to prevent two marbles from getting stuck in the channel - we encountered many issues with marbles getting stuck in the chute openings, so we had to narrow the chute width and add the rounded ends to help.
