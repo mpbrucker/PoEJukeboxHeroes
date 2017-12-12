@@ -8,6 +8,7 @@ img {
 .img-large {
   min-height: 500px !important;
   max-width: 100%;
+  max-height: 800px !important;
 }
 
 .icon:hover {
