@@ -8,6 +8,9 @@ img {
 .img-large {
   min-height: 500px !important;
   max-width: 100%;
+}
+
+.img-massive {
   max-height: 800px !important;
 }
 
