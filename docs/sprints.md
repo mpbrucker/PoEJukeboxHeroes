@@ -40,7 +40,8 @@ This sprint, we were able to get the basic note playing working via an Arduino. 
 
 Upon concluding Sprint 1, we established a team kaizen to keep in mind for Sprint 2. We assigned each team member to a certain task or system as a "point person." We also edited our Minimum Viable Product (MVP) description to make it more specific. To know we had achieved our MVP, we wrote that the jukebox would be able to play "Twinkle, Twinkle, Little Star"  hard-coded and use a magnetic return system to reset the marbles. After assessing our biggest technical risks, we decided that the marble chutes would be the best subsystem to face head-on in this sprint.  
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/P3kJNiBI5nI" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P3kJNiBI5nI" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+
 
 ##### Sprint 2 Deliverable
 
