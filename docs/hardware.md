@@ -16,10 +16,10 @@ Within our jukebox, there are three mechanical subsystems: the enclosure, the ma
 
 Learn more about each of the components of our mechanical design:
 
-[Marble release](/PoEJukeboxHeroes/chutes) - the chutes and solenoids that actually play the notes.
+[Marble release]({{site.baseurl}}/chutes.html) - the chutes and solenoids that actually play the notes.
 
-[Marble return](/PoEJukeboxHeroes/marble_return) - our system to return marbles to their original place.
+[Marble return]({{site.baseurl}}/marble_return.html) - our system to return marbles to their original place.
 
-[Enclosure](/PoEJukeboxHeroes/enclosure) - what holds everything together.
+[Enclosure]({{site.baseurl}}/enclosure.html) - what holds everything together.
 
-[Aesthetics](/PoEJukeboxHeroes/aesthetics) - How we made everything look nice.
+[Aesthetics]({{site.baseurl}}/aesthetics.html) - how we made everything look nice.

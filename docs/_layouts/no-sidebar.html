@@ -34,7 +34,7 @@
 								<li><a href={{site.baseurl}}>Home</a></li>
 								{% for page in site.pages %}
 									{% if page.path != "feed.xml" and page.path != "assets/main.scss" and page.title != "Home" %}
-										{% assign path_name = page.path | remove: ".md" %}
+										{% assign path_name = page.path | replace: ".md", ".html" %}
 
 										{% if page.title == "Mechanical Subsystem" %}
 											<li>
@@ -42,7 +42,7 @@
 											<ul>
 											{% for page in site.pages %}
 												{% if page.type == "subpage" %}
-												  {% assign path_name_2 = page.path | remove: ".md" %}
+												  {% assign path_name_2 = page.path | replace: ".md", ".html" %}
 													<li><a href={{path_name_2}}>{{page.title}}</a></li>
 												{% endif %}
 											{% endfor %}

@@ -20,7 +20,7 @@ A **marble holder** with **two** chutes which launch marbles at a xylophone to a
 
 ### Mechanical
 
-![The solenoid circuit design.](images/mech1.jpg)
+![The solenoid circuit design.]({{site.baseurl}}/images/mech1.jpg)
 
 Over the course of this sprint, we went through quite a few iterations of our marble launcher designs. Early into the sprint, we chose to use solenoids to actuate the marble launching, as they provide the most precise timing for launching marbles. From that point, we prototyped, CADed, and 3D printed approximately 6 different iterations of chute designs, eventually ending up with one that worked fairly consistently. In addition, we built a basic frame that contained the marbles, held the xylophone, and attached to the marble chutes.  
 
@@ -28,7 +28,7 @@ The primary mechanical issue we encountered in this sprint was actuation; the so
 
 ### Electrical
 
-![The solenoid circuit design.](images/elec1.jpg)
+![The solenoid circuit design.]({{site.baseurl}}/images/elec1.jpg)
 
 The electrical design during this sprint was very straightforward. Since our main task was to get ball launching working, the main electrical concern was how to actuate the solenoids. Fortunately, we were able to figure out a design that uses an N-channel MOSFET to actuate the solenoids, and using an external power supply, it was a fairly simple process to actuate them using the Arduino.  
 
@@ -49,7 +49,7 @@ Mechanical jukebox that plays **six** notes by dropping marbles on a xylophone a
 
 ### Mechanical
 
-![State of mechanical system after Sprint 2.](images/mech_sys_2.png)
+![State of mechanical system after Sprint 2.]({{site.baseurl}}/images/mech_sys_2.png)
 
 On the mechanical side, we had to 3D print six marble chutes to play the six notes mandated by our deliverable. The final marble chute design, chosen after tens of iterations, is shown by the picture adjacent to the enclosure. The enclosure was built to mimic the classic style of a jukebox. Its bottom plate was sloped with ridges to allow the marbles to run down to a single pick-up point (for the marble return system) after hitting the xylophone. The top platform the chutes mounted to had ridges to push the marbles toward the holes and into the chutes.  
 
@@ -57,7 +57,7 @@ In addition to the marble chutes and the enclosure, we addressed the marble retu
 
 ### Electrical
 
-![Electrical system after Sprint 2.](images/elec_sys_2.png)
+![Electrical system after Sprint 2.]({{site.baseurl}}/images/elec_sys_2.png)
 
 The most important aspect of electrical system during Sprint 2 was scalability. Going from one chute to six chutes required more circuits on the breadboard. In the image above, the six circuits can be seen, including transistors, diodes, and resistors. Most of our learning goals address aesthetic design in one way or another, so we also worked on wiring the circuits in an organized and color-coded fashion.  
 
@@ -70,8 +70,8 @@ The software converts a MIDI file into a series of notes that are streamed via s
 
 ### Team Health
 
-![Team bonding in Boston.](images/team_bonding_1.png)
-![Team bonding in Boston.](images/team_bonding_2.png)
+![Team bonding in Boston.]({{site.baseurl}}/images/team_bonding_1.png)
+![Team bonding in Boston.]({{site.baseurl}}/images/team_bonding_2.png)
 
 After spending all of Sprint 1 working together, we decided we needed a bonding activity outside of the PoE room. We went into Boston and explored the city, had some tasty pastries, had a few impromptu photoshoots, and even bought some holiday candles.  
 
@@ -95,11 +95,11 @@ A **button-operated** jukebox with **13** marble chutes that plays **"Twinkle, T
 
 For this sprint, we continued polishing and integrating all of our subsystems. We focused a lot of effort on iterating upon the magnetic return system in addition to perfecting the design of the marble chutes and solenoid holders:  
 
-![Final CAD image of marble chute and solenoid holder.](images/final_chute_and_holder.png)
+![Final CAD image of marble chute and solenoid holder.]({{site.baseurl}}/images/final_chute_and_holder.png)
 
 Our MVP included a more reliable marble chute system, a ball catch and return system, and a more fully fleshed out structure. The final assembly of the system as portrayed in SolidWorks is shown below:  
 
-![State of full structure after Sprint 3.](images/mvp_assembly.png)
+![State of full structure after Sprint 3.]({{site.baseurl}}/images/mvp_assembly.png)
 
 Mechanical Design Decisions:  
 
@@ -122,7 +122,7 @@ The wiper design was more time-intensive and for this sprint, we decided not to 
 
 The biggest technical risk we identified moving forward into Sprint 4 was the marble return system. After running our MVP through multiple tests, we decided there needed to be a back railing on the upper portion of the structure to keep marbles from falling backward instead of rolling toward the chutes. This detail was added to our Sprint 4 deliverable. The scraping mechanism we opted for in this sprint was simple. Due to its simplicity, it was also unreliable and the marbles were not evenly dispersed between chutes. Our solution for this concern was to perform longer periods of testing of the ball return and to use a wiper to disperse the marbles more evenly among the chutes.  
 
-![Image of mechanical structure from back.](images/mech_design_decisions.png)
+![Image of mechanical structure from back.]({{site.baseurl}}/images/mech_design_decisions.png)
 
 
 ### Electrical and Software
@@ -137,7 +137,7 @@ Dedicated to having a positive work environment, we made an anonymous survey for
 
 The most significant issues of this sprint besides the major technical risk were what we designate as "Teamwork Takeaways:"  
 
-![Key takeaways from Sprint 3.](images/teamwork_takeaways.png)
+![Key takeaways from Sprint 3.]({{site.baseurl}}/images/teamwork_takeaways.png)
 
 
 # Sprint 4 (Aesthetics and Beyond)
@@ -148,7 +148,7 @@ A **wood stained** jukebox with **chrome accents** that **utilizes all 13 chutes
 
 Once we achieved our MVP, we were able to move on to our stretch goals and improving the aesthetic of our overall design. Our inspiration for this look came from classical, wooden jukeboxes:  
 
-![Our inspiration.](images/the_classic_look.png)
+![Our inspiration.]({{site.baseurl}}/images/the_classic_look.png)
 
  We defined our stretch goals in Sprint 1 and refined them in Sprints 2 and 3:  
 

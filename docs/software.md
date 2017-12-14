@@ -12,7 +12,7 @@ The software and firmware bring together all the components of the jukebox - tak
 You can find all of our code for this project [here](https://github.com/mpbrucker/PoEJukeboxHeroes)
 
 ## Electronics System Diagram
-![System diagram](images/SoftwareDiagram.png)
+![System diagram]({{site.baseurl}}/images/SoftwareDiagram.png)
 ## Software Components
 
 **Software - Raspberry Pi**  
@@ -31,6 +31,6 @@ The Arduino handles the functions that require precise timing - i.e., the actual
 
 ### Control Loop
 
-![Control loop.](images/ControlDiagram.png)
+![Control loop.]({{site.baseurl}}/images/ControlDiagram.png)
 
 As shown in the above diagram, the control loop on the RasPi begins by waiting for button input, then processes and sends the notes to the Arduino, then waits for the duration of the song before restarting.

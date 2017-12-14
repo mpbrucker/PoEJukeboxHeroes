@@ -5,6 +5,10 @@ img {
   margin: auto auto;
 }
 
+.style2 {
+  padding: 1em 0.5em 1em 0.5em;
+}
+
 .img-large {
   min-height: 500px !important;
   max-width: 100%;

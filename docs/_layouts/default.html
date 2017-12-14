@@ -30,7 +30,7 @@
 									<li><a href={{site.baseurl}}>Home</a></li>
 									{% for page in site.pages %}
 										{% if page.path != "feed.xml" and page.path != "assets/main.scss" and page.title != "Home" %}
-											{% assign path_name = page.path | remove: ".md" %}
+											{% assign path_name = page.path | replace: ".md", ".html" %}
 
 											{% if page.title == "Mechanical Subsystem" %}
 												<li>
@@ -38,7 +38,7 @@
 												<ul>
 												{% for page in site.pages %}
 													{% if page.type == "subpage" %}
-														{% assign path_name_2 = page.path | remove: ".md" %}
+														{% assign path_name_2 = page.path | replace: ".md", ".html" %}
 															<li><a href={{path_name_2}}>{{page.title}}</a></li>
 													{% endif %}
 												{% endfor %}
@@ -82,7 +82,7 @@
 							<div class="4u 12u(mobile)">
 								<section class="highlight">
 									{% assign page_name = "images/" | append: page.path %}
-									{% assign path_name = page.path | remove: ".md" %}
+									{% assign path_name = page.path | replace: ".md", ".html" %}
 									<a href={{path_name}} class="image featured" style="background:url({{page_name | replace: "md", "jpg" }})"></a>
 									<h3><a href={{path_name}}>{{page.title}}</a></h3>
 									<p>{{page.description}}</p>
@@ -121,7 +121,10 @@
 									{% assign idx = 0 %}
 									{% for page in site.pages %}
 										{% if page.category == "process" %}
-											{% assign path_name = page.path | remove: ".md" %}
+											{% assign append_path = site.baseurl | append: "/" %}
+
+											{% assign prepend_path = page.path | prepend: append_path %}
+											{% assign path_name = prepend_path | replace: ".md", ".html" %}
 											{% assign test_val = idx | modulo:2 %}
 											{% if test_val == 0 %}
 												<div class="row">
