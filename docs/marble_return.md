@@ -7,7 +7,7 @@ type: subpage
 ## Marble Return Mechanism
 
 ### General Concept
-By looking at the songs that we were interested in playing on our mechanical jukebox, we realized that we would not have enough marbles to play the number of notes that we wanted to play. This combined with our desire to have our jukebox reset itself, led us to create a return mechanism. The goal of this mechanism is to return marbles that have been used back to the top of the marble run. The marble return assembly can be seen below.
+After analyzing the songs that we were interested in playing on our mechanical jukebox, we realized that we would not have enough marbles to play the number of notes that we wanted to play. This, combined with our desire to have our jukebox reset itself, led us to create a return mechanism. The goal of this mechanism is to return marbles that have been used back to the top of the marble run. The marble return assembly can be seen below.
 
 <img class="img-large img-massive" src="images/MarbleReturn.png">
 
